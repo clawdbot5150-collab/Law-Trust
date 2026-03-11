@@ -937,12 +937,7 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
 
 <!-- Chat Bubble Button -->
 <button id="lt-chat-bubble" aria-label="Chat with Alex" title="Chat with our legal guide">
-  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M12 2C6.48 2 2 6.02 2 11c0 2.76 1.27 5.23 3.27 6.93L4 22l4.36-1.45C9.44 20.83 10.7 21 12 21c5.52 0 10-4.02 10-9S17.52 2 12 2z" fill="#D4AF37"/>
-    <circle cx="8" cy="11" r="1.2" fill="#0A1628"/>
-    <circle cx="12" cy="11" r="1.2" fill="#0A1628"/>
-    <circle cx="16" cy="11" r="1.2" fill="#0A1628"/>
-  </svg>
+  <span style="font-size:26px;line-height:1;">⚖️</span>
 </button>
 
 <!-- Chat Panel -->
@@ -970,17 +965,21 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
 </div>
 
 <script>
+// ALEX BOT WIDGET v2 — uses /api/chat/alex with full messages array
 (function() {
-  var STORAGE_KEY = 'lt_chat_history';
+  var SESSION_KEY = 'alex_session_' + Math.random().toString(36).substr(2, 9);
+  var STORAGE_KEY = 'alex_chat';
   var autoOpenTimer = null;
-  var conversation = [];
+  var autoOpened = false;
+  var messages = []; // Full conversation history {role, content}
 
   function loadHistory() {
     try {
       var saved = sessionStorage.getItem(STORAGE_KEY);
       if (saved) {
         var data = JSON.parse(saved);
-        conversation = data.conversation || [];
+        messages = data.messages || [];
+        SESSION_KEY = data.sessionId || SESSION_KEY;
         return data;
       }
     } catch(e) {}
@@ -989,7 +988,7 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
 
   function saveHistory() {
     try {
-      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ conversation: conversation }));
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify({ messages: messages, sessionId: SESSION_KEY }));
     } catch(e) {}
   }
 
@@ -1018,10 +1017,22 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
     if (el) el.remove();
   }
 
+  function alexGreet() {
+    var greetings = [
+      "Hi! I'm Alex. Most people who come here save over $800 on legal documents. What document are you thinking about?",
+      "Hey there! Getting your legal docs sorted is one of the smartest things you can do. What brings you here today?",
+      "Hi! Thinking about a will, trust, or another legal document? I can help you find the right service in minutes."
+    ];
+    var msg = greetings[Math.floor(Math.random() * greetings.length)];
+    addMessage(msg, 'bot');
+    messages.push({ role: 'assistant', content: msg });
+    saveHistory();
+  }
+
   async function sendMessage(text) {
     if (!text.trim()) return;
     addMessage(text, 'user');
-    conversation.push({ role: 'user', content: text });
+    messages.push({ role: 'user', content: text });
     saveHistory();
 
     var input = document.getElementById('lt-chat-input');
@@ -1031,12 +1042,12 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
     showTyping();
 
     try {
-      var response = await fetch('/api/chat', {
+      var response = await fetch('/api/chat/alex', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          message: text,
-          context: conversation.slice(-6)
+          messages: messages.slice(-10),
+          sessionId: SESSION_KEY
         })
       });
 
@@ -1044,25 +1055,17 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
       var data = await response.json();
       removeTyping();
 
-      addMessage(data.reply, 'bot');
-      conversation.push({ role: 'assistant', content: data.reply });
+      var reply = data.reply || "I'm having a moment — try again!";
+      addMessage(reply, 'bot');
+      messages.push({ role: 'assistant', content: reply });
       saveHistory();
-
-      if (data.suggestedProduct && data.ctaText) {
-        var msgs = document.getElementById('lt-chat-messages');
-        var ctaDiv = document.createElement('div');
-        ctaDiv.style.cssText = 'text-align:right; margin-top:4px;';
-        ctaDiv.innerHTML = '<a href="/go/' + data.suggestedProduct + '/chat" style="font-size:12px;color:#D4AF37;text-decoration:underline;">' + data.ctaText + '</a>';
-        msgs.appendChild(ctaDiv);
-        msgs.scrollTop = msgs.scrollHeight;
-      }
     } catch (e) {
       removeTyping();
-      addMessage("Sorry, I'm having trouble connecting. Please try again in a moment.", 'bot');
+      addMessage("Connection issue — please try again!", 'bot');
     }
   }
 
-  function openPanel() {
+  function openPanel(exitIntent) {
     var panel = document.getElementById('lt-chat-panel');
     panel.classList.add('open');
     if (autoOpenTimer) { clearTimeout(autoOpenTimer); autoOpenTimer = null; }
@@ -1070,13 +1073,17 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
     var msgs = document.getElementById('lt-chat-messages');
     if (msgs.children.length === 0) {
       var saved = loadHistory();
-      if (saved && saved.conversation && saved.conversation.length > 0) {
-        // Restore conversation
-        saved.conversation.forEach(function(m) {
+      if (saved && saved.messages && saved.messages.length > 0) {
+        saved.messages.forEach(function(m) {
           addMessage(m.content, m.role === 'user' ? 'user' : 'bot');
         });
+      } else if (exitIntent) {
+        var msg = "Wait — before you go, can I ask what you were looking for? I might be able to point you right to it.";
+        addMessage(msg, 'bot');
+        messages.push({ role: 'assistant', content: msg });
+        saveHistory();
       } else {
-        addMessage("Hi! What legal document can I help you with today? 😊", 'bot');
+        alexGreet();
       }
     }
     setTimeout(function() { document.getElementById('lt-chat-input').focus(); }, 100);
@@ -1088,7 +1095,7 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
 
   document.getElementById('lt-chat-bubble').addEventListener('click', function() {
     var panel = document.getElementById('lt-chat-panel');
-    if (panel.classList.contains('open')) { closePanel(); } else { openPanel(); }
+    if (panel.classList.contains('open')) { closePanel(); } else { openPanel(false); }
   });
 
   document.getElementById('lt-chat-close').addEventListener('click', closePanel);
@@ -1102,18 +1109,32 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
       e.preventDefault();
       sendMessage(this.value);
     }
-    // Auto-resize
     this.style.height = 'auto';
     this.style.height = Math.min(this.scrollHeight, 100) + 'px';
   });
 
-  // Auto-open after 45 seconds
-  autoOpenTimer = setTimeout(function() {
-    var panel = document.getElementById('lt-chat-panel');
-    if (!panel.classList.contains('open')) {
-      openPanel();
+  // Auto-open after 45 seconds (first visit only)
+  if (!sessionStorage.getItem('alex_opened')) {
+    autoOpenTimer = setTimeout(function() {
+      var panel = document.getElementById('lt-chat-panel');
+      if (!panel.classList.contains('open') && !autoOpened) {
+        autoOpened = true;
+        sessionStorage.setItem('alex_opened', '1');
+        openPanel(false);
+      }
+    }, 45000);
+  }
+
+  // Exit intent
+  document.addEventListener('mouseleave', function(e) {
+    if (e.clientY < 10) {
+      var panel = document.getElementById('lt-chat-panel');
+      if (!panel.classList.contains('open') && !autoOpened) {
+        autoOpened = true;
+        openPanel(true);
+      }
     }
-  }, 45000);
+  });
 })();
 </script>
 <!-- ===== END ALEX CHAT WIDGET ===== -->
