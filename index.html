@@ -752,7 +752,89 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
   </div>
 </div>
 
-<!-- TODO: Footer and scripts to come -->
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Law<span>Trust</span>.com</div>
+        <p class="footer-desc">Independent comparisons of online legal document services. We help families in the USA, UK, Canada, Australia, Ireland, and India save thousands on legal fees.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Documents</div>
+        <ul class="footer-links">
+          <li><a href="#">Wills &amp; Testaments</a></li>
+          <li><a href="#">Living Trusts</a></li>
+          <li><a href="#">Power of Attorney</a></li>
+          <li><a href="#">Healthcare Directives</a></li>
+          <li><a href="#">Business Formation</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Countries</div>
+        <ul class="footer-links">
+          <li><a href="#">United States</a></li>
+          <li><a href="#">United Kingdom</a></li>
+          <li><a href="#">Canada</a></li>
+          <li><a href="#">Australia</a></li>
+          <li><a href="#">Ireland &amp; India</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">How We Rate</a></li>
+          <li><a href="#">Editorial Policy</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Advertise</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Law-Trust.com. All rights reserved.</span>
+      <span>
+        <a href="#" style="color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 1rem;">Privacy Policy</a>
+        <a href="#" style="color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 1rem;">Terms of Use</a>
+        <a href="#" style="color: rgba(255,255,255,0.3); text-decoration: none; margin-left: 1rem;">Affiliate Disclosure</a>
+      </span>
+    </div>
+    <div class="disclaimer">
+      <strong style="color: rgba(255,255,255,0.35);">Affiliate Disclosure:</strong> Law-Trust.com may earn a commission when you click links to legal service providers on this site, at no additional cost to you. Our editorial rankings are independent and are not influenced by affiliate relationships. Law-Trust.com is not a law firm and does not provide legal advice. The information on this site is for informational purposes only.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Quick Hero Calculator
+  function updateQuickCalc() {
+    const attyBase = parseInt(document.getElementById('docType').value);
+    const onlinePrice = Math.round(attyBase * 0.07);
+    const savings = attyBase - onlinePrice;
+    document.getElementById('attyPrice').textContent = '~$' + attyBase.toLocaleString();
+    document.getElementById('onlinePrice').textContent = '~$' + onlinePrice;
+    document.getElementById('savingsAmt').textContent = '$' + savings.toLocaleString();
+  }
+
+  // Big Calculator
+  function updateBigCalc() {
+    const docs = parseInt(document.getElementById('numDocs').value);
+    const rate = parseInt(document.getElementById('hourlyRate').value);
+    const hrs  = parseInt(document.getElementById('hours').value);
+    document.getElementById('numDocsVal').textContent = docs + ' document' + (docs > 1 ? 's' : '');
+    document.getElementById('hourlyVal').textContent  = '$' + rate + '/hour';
+    document.getElementById('hoursVal').textContent   = hrs + ' hour' + (hrs > 1 ? 's' : '');
+    const atty    = docs * rate * hrs;
+    const online  = docs * 99;
+    const savings = atty - online;
+    document.getElementById('totalSave').textContent = '$' + savings.toLocaleString();
+  }
+
+  <!-- TODO: More scripts to come -->
+</script>
+
+</body>
+</html>
 
 </body>
 </html>
