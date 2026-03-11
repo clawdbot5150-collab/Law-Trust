@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estate Planning Blog 2026 — Expert Guides & Comparisons | Law-Trust.com</title>
+  <meta name="description" content="Expert estate planning guides for 2026. Will vs trust, service comparisons, cost breakdowns, and step-by-step tutorials for US, UK, Canadian, and Australian families.">
+  <link rel="canonical" href="https://law-trust.com/blog/">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy: #0a1628; --navy-mid: #112240; --gold: #c9a84c; --gold-light: #e2c27a; --white: #fff; --text: #1a2540; --muted: #64748b; --light-bg: #f8f7f4; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background: #fff; line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(10,22,40,0.97); backdrop-filter: blur(8px); padding: 0 2rem; height: 64px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(201,168,76,0.15); }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--white); }
+    .nav-logo span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
+    .nav-links a { color: rgba(255,255,255,0.75); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.5rem 1.25rem; border-radius: 4px; font-weight: 600 !important; }
+
+    /* HERO */
+    .blog-hero { background: var(--navy); padding: 7rem 2rem 4.5rem; text-align: center; position: relative; overflow: hidden; }
+    .blog-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%); }
+    .blog-hero-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-block; background: rgba(201,168,76,0.15); color: var(--gold); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 20px; border: 1px solid rgba(201,168,76,0.3); margin-bottom: 1.25rem; }
+    .blog-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: var(--white); line-height: 1.15; margin-bottom: 1rem; }
+    .blog-hero p { color: rgba(255,255,255,0.6); font-size: 1.05rem; max-width: 520px; margin: 0 auto; }
+
+    /* BREADCRUMB */
+    .breadcrumb { background: var(--light-bg); padding: 0.85rem 2rem; border-bottom: 1px solid #e8e4d8; }
+    .breadcrumb-inner { max-width: 1200px; margin: 0 auto; font-size: 0.82rem; color: var(--muted); }
+    .breadcrumb-inner a { color: var(--muted); }
+    .breadcrumb-inner a:hover { color: var(--gold); }
+
+    /* LAYOUT */
+    .blog-layout { max-width: 1200px; margin: 0 auto; padding: 4rem 2rem 6rem; display: grid; grid-template-columns: 1fr 320px; gap: 4rem; align-items: start; }
+
+    /* FEATURED POST */
+    .featured-post { background: var(--navy); border-radius: 14px; overflow: hidden; margin-bottom: 3rem; position: relative; }
+    .featured-badge { position: absolute; top: 1.25rem; left: 1.25rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 20px; z-index: 1; }
+    .featured-img { width: 100%; height: 220px; background: linear-gradient(135deg, #112240 0%, #1a3a5c 100%); display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+    .featured-body { padding: 2rem; }
+    .featured-tag { display: inline-block; background: rgba(201,168,76,0.15); color: var(--gold); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.25rem 0.75rem; border-radius: 20px; margin-bottom: 0.9rem; }
+    .featured-body h2 { font-family: 'Playfair Display', serif; font-size: 1.65rem; font-weight: 700; color: var(--white); line-height: 1.2; margin-bottom: 0.75rem; }
+    .featured-body p { color: rgba(255,255,255,0.55); font-size: 0.92rem; margin-bottom: 1.5rem; line-height: 1.6; }
+    .featured-meta { display: flex; gap: 1.5rem; color: rgba(255,255,255,0.35); font-size: 0.78rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+    .btn-gold { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); padding: 0.75rem 1.5rem; border-radius: 5px; font-weight: 700; font-size: 0.88rem; transition: all 0.2s; }
+    .btn-gold:hover { background: var(--gold-light); }
+
+    /* POST GRID */
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.5rem; padding-bottom: 0.75rem; border-bottom: 2px solid rgba(201,168,76,0.2); display: flex; align-items: center; gap: 0.75rem; }
+    .section-label::before { content: ''; flex: 1; height: 1px; background: rgba(201,168,76,0.15); }
+    .posts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; }
+    .post-card { background: var(--white); border: 1px solid #e8e4d8; border-radius: 12px; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+    .post-card:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.1); }
+    .post-card-img { height: 120px; background: linear-gradient(135deg, var(--light-bg), #ede8d8); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; }
+    .post-card-body { padding: 1.25rem; }
+    .post-card-tag { display: inline-block; background: rgba(201,168,76,0.1); color: #8a6a0a; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.2rem 0.6rem; border-radius: 20px; margin-bottom: 0.6rem; }
+    .post-card h3 { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); line-height: 1.3; margin-bottom: 0.5rem; }
+    .post-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; margin-bottom: 0.85rem; }
+    .post-card-meta { font-size: 0.75rem; color: rgba(100,116,139,0.75); display: flex; gap: 1rem; flex-wrap: wrap; }
+    .post-read-more { display: inline-flex; align-items: center; gap: 0.3rem; color: var(--gold); font-size: 0.82rem; font-weight: 600; margin-top: 0.75rem; }
+    .post-read-more:hover { text-decoration: underline; }
+
+    /* SIDEBAR */
+    .sidebar { position: sticky; top: 84px; }
+    .sidebar-card { background: var(--light-bg); border: 1px solid #e8e4d8; border-radius: 12px; padding: 1.5rem; margin-bottom: 1.75rem; }
+    .sidebar-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--navy); margin-bottom: 1rem; padding-bottom: 0.6rem; border-bottom: 2px solid rgba(201,168,76,0.2); }
+    .sidebar-list { list-style: none; }
+    .sidebar-list li { padding: 0.6rem 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
+    .sidebar-list li:last-child { border: none; }
+    .sidebar-list a { font-size: 0.88rem; color: var(--navy); font-weight: 500; transition: color 0.2s; }
+    .sidebar-list a:hover { color: var(--gold); }
+    .sidebar-list .meta { font-size: 0.75rem; color: var(--muted); margin-top: 0.15rem; }
+    .topic-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .topic-tag { background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25); color: #6b5c1e; font-size: 0.78rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 20px; transition: all 0.2s; }
+    .topic-tag:hover { background: var(--gold); color: var(--navy); }
+    .compare-sidebar { background: var(--navy); border-radius: 12px; padding: 1.5rem; text-align: center; }
+    .compare-sidebar h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 0.5rem; }
+    .compare-sidebar p { color: rgba(255,255,255,0.55); font-size: 0.84rem; margin-bottom: 1.25rem; }
+    .btn-gold-sm { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--gold); color: var(--navy); padding: 0.65rem 1.25rem; border-radius: 5px; font-weight: 700; font-size: 0.85rem; transition: all 0.2s; }
+    .btn-gold-sm:hover { background: var(--gold-light); }
+
+    /* FOOTER */
+    footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 3rem 2rem 2rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; font-size: 0.78rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.06); }
+    .footer-bottom a { color: rgba(255,255,255,0.3); margin-left: 1rem; }
+
+    @media (max-width: 900px) {
+      .blog-layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; }
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Law<span>Trust</span>.com</a>
+  <ul class="nav-links">
+    <li><a href="/#compare">Compare</a></li>
+    <li><a href="/#categories">Documents</a></li>
+    <li><a href="/blog/" class="active">Blog</a></li>
+    <li><a href="/#compare" class="nav-cta">Find Best Deal →</a></li>
+  </ul>
+</nav>
+
+<div class="breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Home</a> › Blog
+  </div>
+</div>
+
+<section class="blog-hero">
+  <div class="blog-hero-inner">
+    <span class="hero-eyebrow">📚 Expert Guides · 2026</span>
+    <h1>Estate Planning<br>Made Clear</h1>
+    <p>Honest, independent guides on wills, trusts, and legal document services — so you can protect your family without overpaying.</p>
+  </div>
+</section>
+
+<div class="blog-layout">
+  <!-- MAIN COLUMN -->
+  <main>
+
+    <!-- FEATURED POST -->
+    <a href="/blog/best-online-will-maker-2026.html" style="display:block;">
+      <div class="featured-post">
+        <span class="featured-badge">⭐ Editor's Pick</span>
+        <div class="featured-img">📝</div>
+        <div class="featured-body">
+          <span class="featured-tag">🏆 Top Picks</span>
+          <h2>Best Online Will Maker 2026:<br>Top 5 Services Compared</h2>
+          <p>We reviewed Trust & Will, LegalZoom, Rocket Lawyer, Fabric, and Nolo on pricing, ease of use, document completeness, and customer support. Here's who wins — and who's overpriced.</p>
+          <div class="featured-meta">
+            <span>📅 March 11, 2026</span>
+            <span>⏱ 8 min read</span>
+            <span>🇺🇸 US Edition</span>
+          </div>
+          <span class="btn-gold">Read Guide →</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- POST GRID -->
+    <div class="section-label">Latest Articles</div>
+
+    <div class="posts-grid">
+
+      <a href="/blog/trust-and-will-vs-legalzoom-2026.html">
+        <div class="post-card">
+          <div class="post-card-img">⚖️</div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Head-to-Head</span>
+            <h3>Trust & Will vs LegalZoom 2026: Which Is Actually Worth It?</h3>
+            <p>Price breakdown, document quality, attorney access, and who should choose each — based on your specific situation.</p>
+            <div class="post-card-meta">
+              <span>📅 Mar 11, 2026</span>
+              <span>⏱ 7 min</span>
+            </div>
+            <span class="post-read-more">Read article →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/living-trust-vs-will-2026.html">
+        <div class="post-card">
+          <div class="post-card-img">📋</div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Estate Planning</span>
+            <h3>Living Trust vs Will 2026: Which Protects Your Family Better?</h3>
+            <p>Probate costs, privacy, funding requirements, and the clear decision guide for whether a trust is worth it for you.</p>
+            <div class="post-card-meta">
+              <span>📅 Mar 11, 2026</span>
+              <span>⏱ 8 min</span>
+            </div>
+            <span class="post-read-more">Read article →</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="/blog/do-you-need-a-lawyer-to-write-a-will.html">
+        <div class="post-card">
+          <div class="post-card-img">💡</div>
+          <div class="post-card-body">
+            <span class="post-card-tag">Guides</span>
+            <h3>Do You Need a Lawyer to Write a Will? The Honest Answer</h3>
+            <p>The real cost comparison, the 4 estate planning myths costing families money, and exactly when an attorney is worth paying for.</p>
+            <div class="post-card-meta">
+              <span>📅 Mar 11, 2026</span>
+              <span>⏱ 7 min</span>
+            </div>
+            <span class="post-read-more">Read article →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Placeholder card for future posts -->
+      <div class="post-card" style="border-style: dashed; opacity: 0.55;">
+        <div class="post-card-img" style="background: #f0ede5;">🇨🇦</div>
+        <div class="post-card-body">
+          <span class="post-card-tag">Canada</span>
+          <h3>Best Online Will Services in Canada 2026</h3>
+          <p>Willful, NotaryPro, and US services with Canadian support — ranked for every province.</p>
+          <div class="post-card-meta"><span>Coming soon</span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="compare-sidebar">
+      <h3>Find Your Best Deal</h3>
+      <p>Compare all 6 services side by side — pricing, features, and our full rating breakdown.</p>
+      <a href="/#compare" class="btn-gold-sm">Compare Now →</a>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Popular Articles</div>
+      <ul class="sidebar-list">
+        <li>
+          <a href="/blog/best-online-will-maker-2026.html">Best Online Will Maker 2026</a>
+          <div class="meta">📅 Mar 11, 2026 · 8 min</div>
+        </li>
+        <li>
+          <a href="/blog/trust-and-will-vs-legalzoom-2026.html">Trust & Will vs LegalZoom 2026</a>
+          <div class="meta">📅 Mar 11, 2026 · 7 min</div>
+        </li>
+        <li>
+          <a href="/blog/living-trust-vs-will-2026.html">Living Trust vs Will 2026</a>
+          <div class="meta">📅 Mar 11, 2026 · 8 min</div>
+        </li>
+        <li>
+          <a href="/blog/do-you-need-a-lawyer-to-write-a-will.html">Do You Need a Lawyer for a Will?</a>
+          <div class="meta">📅 Mar 11, 2026 · 7 min</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sidebar-title">Browse by Topic</div>
+      <div class="topic-tags">
+        <a href="#" class="topic-tag">Wills</a>
+        <a href="#" class="topic-tag">Living Trusts</a>
+        <a href="#" class="topic-tag">Comparisons</a>
+        <a href="#" class="topic-tag">Power of Attorney</a>
+        <a href="#" class="topic-tag">Cost Guides</a>
+        <a href="#" class="topic-tag">Canada</a>
+        <a href="#" class="topic-tag">UK</a>
+        <a href="#" class="topic-tag">Beginners</a>
+      </div>
+    </div>
+
+    <div class="sidebar-card" style="background: #fff8ee; border-color: rgba(201,168,76,0.3);">
+      <div class="sidebar-title">Free Estate Planning Checklist</div>
+      <p style="font-size:0.85rem; color: var(--muted); margin-bottom: 1rem;">Get our 15-point checklist for protecting your family — delivered to your inbox, free.</p>
+      <a href="/lead-form.html" class="btn-gold-sm" style="width:100%; justify-content:center;">Get Free Checklist →</a>
+    </div>
+
+  </aside>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-bottom">
+      <span>© 2026 Law-Trust.com. All rights reserved.</span>
+      <span>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">Affiliate Disclosure</a>
+      </span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
