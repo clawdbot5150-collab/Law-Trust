@@ -106,6 +106,96 @@ nav {
 .banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 60%); }
 .banner-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
 
+.hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.05; color: var(--white); margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.1s ease both; }
+.hero-title em { font-style: italic; color: var(--gold); }
+.hero-sub { font-size: 1.125rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 2.5rem; max-width: 520px; font-weight: 300; animation: fadeUp 0.6s 0.2s ease both; }
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+.btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: var(--navy); padding: 0.9rem 2rem; border-radius: 5px; font-weight: 700; font-size: 0.95rem; text-decoration: none; letter-spacing: 0.01em; transition: all 0.25s; border: none; cursor: pointer; }
+.btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.3); }
+.btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); padding: 0.9rem 2rem; border-radius: 5px; font-weight: 500; font-size: 0.95rem; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); transition: all 0.25s; }
+.btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+.hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; animation: fadeUp 0.6s 0.4s ease both; }
+.hero-stat-num { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.hero-stat-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 0.25rem; font-weight: 400; }
+
+/* Hero Card */
+.hero-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 2rem; backdrop-filter: blur(10px); animation: fadeLeft 0.7s 0.2s ease both; }
+.hero-card-title { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--white); margin-bottom: 0.4rem; }
+.hero-card-sub { font-size: 0.8rem; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; }
+.calculator { display: flex; flex-direction: column; gap: 0.75rem; }
+.calc-label { font-size: 0.8rem; color: rgba(255,255,255,0.6); font-weight: 500; margin-bottom: 0.25rem; }
+.calc-select { width: 100%; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: var(--white); padding: 0.7rem 1rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a84c' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; transition: border-color 0.2s; }
+.calc-select:focus { outline: none; border-color: var(--gold); }
+.calc-select option { background: var(--navy-mid); }
+.calc-result { background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05)); border: 1px solid rgba(201,168,76,0.3); border-radius: 10px; padding: 1.25rem; margin-top: 0.5rem; }
+.calc-result-row { display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; color: rgba(255,255,255,0.6); margin-bottom: 0.4rem; }
+.calc-result-savings { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; color: var(--gold); line-height: 1; }
+.calc-result-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem; }
+
+/* ===== TRUST BAR ===== */
+.trust-bar { background: var(--cream-dark); border-top: 1px solid rgba(0,0,0,0.06); border-bottom: 1px solid rgba(0,0,0,0.06); padding: 1rem 2rem; overflow: hidden; }
+.trust-bar-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; }
+.trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-light); font-weight: 500; }
+.trust-item svg { color: var(--green); flex-shrink: 0; }
+
+/* ===== SECTION STYLES ===== */
+section { padding: 6rem 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-eyebrow { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+.section-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 700; line-height: 1.15; color: var(--navy); margin-bottom: 1rem; }
+.section-sub { font-size: 1.05rem; color: var(--text-light); line-height: 1.7; max-width: 580px; font-weight: 300; }
+
+/* ===== COMPARE SECTION ===== */
+.compare-section { background: var(--cream); }
+.compare-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+.filter-tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.filter-tab { padding: 0.5rem 1.1rem; border-radius: 100px; font-size: 0.82rem; font-weight: 600; border: 1.5px solid var(--cream-dark); background: var(--white); color: var(--text-light); cursor: pointer; transition: all 0.2s; }
+.filter-tab.active, .filter-tab:hover { background: var(--navy); border-color: var(--navy); color: var(--white); }
+
+/* Product Cards */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+.product-card { background: var(--white); border: 1.5px solid var(--cream-dark); border-radius: 16px; padding: 1.75rem; position: relative; transition: all 0.3s; cursor: pointer; }
+.product-card:hover { border-color: var(--gold); box-shadow: 0 8px 40px rgba(0,0,0,0.08); transform: translateY(-3px); }
+.product-card.featured { border-color: var(--gold); box-shadow: 0 4px 24px rgba(201,168,76,0.15); }
+.card-badge { position: absolute; top: -1px; right: 1.5rem; background: var(--gold); color: var(--navy); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.3rem 0.8rem; border-radius: 0 0 8px 8px; }
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+.card-logo-area { display: flex; align-items: center; gap: 0.75rem; }
+.card-logo { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 900; font-size: 1.1rem; color: var(--white); flex-shrink: 0; }
+.card-name { font-weight: 700; font-size: 1.05rem; color: var(--navy); line-height: 1.2; }
+.card-tagline { font-size: 0.78rem; color: var(--text-light); margin-top: 0.15rem; }
+.card-score { text-align: right; }
+.score-num { font-family: 'Playfair Display', serif; font-size: 1.75rem; font-weight: 700; color: var(--navy); line-height: 1; }
+.score-label { font-size: 0.7rem; color: var(--text-light); }
+.stars { color: var(--gold); font-size: 0.8rem; margin: 0.25rem 0; }
+.card-desc { font-size: 0.875rem; color: var(--text-light); line-height: 1.6; margin-bottom: 1.25rem; }
+.card-features { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.5rem; }
+.card-features li { display: flex; align-items: center; gap: 0.5rem; font-size: 0.82rem; color: var(--text-light); }
+.check-icon { width: 16px; height: 16px; background: rgba(45, 106, 79, 0.12); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--green); font-size: 10px; }
+.card-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 1.25rem; border-top: 1px solid var(--cream-dark); gap: 1rem; }
+.card-price { font-size: 0.8rem; color: var(--text-light); }
+.card-price strong { font-size: 1.25rem; font-weight: 700; color: var(--navy); font-family: 'Playfair Display', serif; }
+.card-btn { display: inline-flex; align-items: center; gap: 0.4rem; background: var(--navy); color: var(--white); padding: 0.6rem 1.25rem; border-radius: 6px; font-size: 0.82rem; font-weight: 600; text-decoration: none; transition: all 0.2s; border: none; cursor: pointer; white-space: nowrap; }
+.card-btn:hover { background: var(--gold); color: var(--navy); }
+
+/* ===== SAVINGS CALCULATOR ===== */
+.savings-section { background: var(--navy); position: relative; overflow: hidden; }
+.savings-section::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 60%); }
+.savings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; position: relative; z-index: 1; }
+.savings-text .section-title { color: var(--white); }
+.savings-text .section-sub { color: rgba(255,255,255,0.6); }
+.big-calc { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; }
+.big-calc-title { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: var(--white); margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.calc-row { margin-bottom: 1.5rem; }
+.calc-row-label { font-size: 0.8rem; color: rgba(255,255,255,0.55); font-weight: 500; margin-bottom: 0.5rem; }
+.range-wrap { position: relative; }
+input[type="range"] { width: 100%; -webkit-appearance: none; height: 4px; background: rgba(255,255,255,0.15); border-radius: 4px; outline: none; cursor: pointer; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; border-radius: 50%; background: var(--gold); cursor: pointer; box-shadow: 0 2px 8px rgba(201,168,76,0.4); }
+.range-value { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--gold); text-align: right; margin-top: 0.4rem; }
+.total-saving-box { background: linear-gradient(135deg, var(--gold), var(--gold-light)); border-radius: 12px; padding: 1.5rem; text-align: center; margin-top: 1.5rem; }
+.total-save-label { font-size: 0.8rem; font-weight: 700; color: rgba(10,22,40,0.7); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+.total-save-num { font-family: 'Playfair Display', serif; font-size: 3rem; font-weight: 900; color: var(--navy); line-height: 1; }
+.total-save-sub { font-size: 0.8rem; color: rgba(10,22,40,0.6); margin-top: 0.4rem; }
+
 /* TODO: More CSS to come */
 
 @keyframes fadeUp {
