@@ -337,6 +337,83 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
   </div>
 </section>
 
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Unbiased, independent reviews
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Updated monthly by our legal team
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      We never accept payment for rankings
+    </div>
+    <div class="trust-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Covers USA, UK, Canada, Australia &amp; more
+    </div>
+  </div>
+</div>
+
+<!-- COMPARE SECTION -->
+<section class="compare-section" id="compare">
+  <div class="section-inner">
+    <div class="compare-header">
+      <div>
+        <span class="section-eyebrow">Our Top Picks</span>
+        <h2 class="section-title">Best Online Legal Document<br>Services of 2025</h2>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-tab active" onclick="filterCards('all', this)">All Documents</button>
+        <button class="filter-tab" onclick="filterCards('will', this)">Wills</button>
+        <button class="filter-tab" onclick="filterCards('trust', this)">Trusts</button>
+        <button class="filter-tab" onclick="filterCards('poa', this)">Power of Attorney</button>
+        <button class="filter-tab" onclick="filterCards('business', this)">Business</button>
+      </div>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+
+      <!-- Card 1 - Trust & Will -->
+      <div class="product-card featured" data-cats="will trust poa">
+        <div class="card-badge">⭐️ Editor's Pick</div>
+        <div class="card-top">
+          <div class="card-logo-area">
+            <div class="card-logo" style="background: linear-gradient(135deg, #1a3a5c, #2d5a8e);">T&amp;W</div>
+            <div>
+              <div class="card-name">Trust &amp; Will</div>
+              <div class="card-tagline">Best overall for estate planning</div>
+            </div>
+          </div>
+          <div class="card-score">
+            <div class="score-num">9.7</div>
+            <div class="stars">★★★★★</div>
+            <div class="score-label">2,841 reviews</div>
+          </div>
+        </div>
+        <p class="card-desc">The gold standard for online estate planning. Covers wills, trusts, and POA in a guided, attorney-reviewed platform. Legally valid in all 50 US states.</p>
+        <ul class="card-features">
+          <li><span class="check-icon">✓</span> Attorney-reviewed documents</li>
+          <li><span class="check-icon">✓</span> Legally valid in all US states</li>
+          <li><span class="check-icon">✓</span> Includes healthcare directive</li>
+          <li><span class="check-icon">✓</span> Unlimited updates included</li>
+        </ul>
+        <div class="card-bottom">
+          <div class="card-price">From <strong>$69</strong> <span>/document</span></div>
+          <a href="#" class="card-btn">Get Deal →</a>
+        </div>
+      </div>
+
+      <!-- TODO: More product cards to come -->
+
+    </div><!-- /products-grid -->
+  </div>
+</section>
+
 <!-- TODO: Remaining sections to come -->
 
 </body>
