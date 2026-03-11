@@ -11,14 +11,14 @@ const { processSequences } = require('../email/sequences');
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
 const BLOG_TOPICS = [
-  'best will maker 2025',
-  'LegalZoom vs Trust and Will',
-  'how much does a will cost',
-  'power of attorney guide',
-  'do I need a living trust',
-  'online trust vs attorney cost',
-  'LegalZoom alternatives 2025',
-  'estate planning checklist'
+  'best will maker 2026',
+  'LegalZoom vs Trust and Will 2026',
+  'how much does a will cost in 2026',
+  'power of attorney guide 2026',
+  'do I need a living trust in 2026',
+  'online trust vs attorney cost 2026',
+  'LegalZoom alternatives 2026',
+  'estate planning checklist 2026'
 ];
 
 let topicIndex = 0;
