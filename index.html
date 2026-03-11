@@ -252,7 +252,92 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
   </ul>
 </nav>
 
-<!-- TODO: Hero and remaining sections to come -->
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div>
+      <div class="hero-eyebrow">Trusted by 50,000+ Families in 6 Countries</div>
+      <h1 class="hero-title">
+        Stop Overpaying<br>Lawyers for<br><em>Simple Documents</em>
+      </h1>
+      <p class="hero-sub">
+        We independently compare every major online legal document service so you can get attorney-quality wills, trusts, and more — for up to 90% less.
+      </p>
+      <div class="hero-actions">
+        <a href="#compare" class="btn-primary">
+          Compare Services Free
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#calculator" class="btn-secondary">Calculate My Savings</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-num">$2,400</div>
+          <div class="hero-stat-label">Average savings per family</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">47+</div>
+          <div class="hero-stat-label">Services reviewed</div>
+        </div>
+        <div>
+          <div class="hero-stat-num">6</div>
+          <div class="hero-stat-label">Countries covered</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Calculator Card -->
+    <div class="hero-card">
+      <div class="hero-card-title">Quick Savings Estimate</div>
+      <div class="hero-card-sub">See how much you could save today</div>
+      <div class="calculator">
+        <div>
+          <div class="calc-label">Document Type</div>
+          <select class="calc-select" id="docType" onchange="updateQuickCalc()">
+            <option value="1200">Last Will & Testament</option>
+            <option value="1800">Living Trust</option>
+            <option value="800">Power of Attorney</option>
+            <option value="2500">Full Estate Plan Bundle</option>
+            <option value="600">Healthcare Directive</option>
+            <option value="400">Simple Divorce Forms</option>
+          </select>
+        </div>
+        <div>
+          <div class="calc-label">Your Country</div>
+          <select class="calc-select" id="country" onchange="updateQuickCalc()">
+            <option>United States</option>
+            <option>Canada</option>
+            <option>United Kingdom</option>
+            <option>Australia</option>
+            <option>Ireland</option>
+            <option>India</option>
+          </select>
+        </div>
+        <div class="calc-result">
+          <div class="calc-result-row">
+            <span>Attorney cost:</span>
+            <span id="attyPrice">~$1,200</span>
+          </div>
+          <div class="calc-result-row">
+            <span>Online service:</span>
+            <span id="onlinePrice" style="color: var(--green-light);">~$89</span>
+          </div>
+          <div style="border-top: 1px solid rgba(201,168,76,0.2); padding-top: 0.75rem; margin-top: 0.5rem;">
+            <div class="calc-result-savings" id="savingsAmt">$1,111</div>
+            <div class="calc-result-label">estimated savings</div>
+          </div>
+        </div>
+        <a href="#compare" class="btn-primary" style="width:100%; justify-content:center;">
+          See Best Options →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TODO: Remaining sections to come -->
 
 </body>
 </html>
