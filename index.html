@@ -635,6 +635,66 @@ footer { background: #070e1c; color: rgba(255,255,255,0.45); padding: 4rem 2rem 
   </div>
 </section>
 
+<!-- SAVINGS CALCULATOR -->
+<section class="savings-section" id="calculator">
+  <div class="section-inner">
+    <div class="savings-grid">
+      <div class="savings-text">
+        <span class="section-eyebrow" style="color: var(--gold);">Real Dollar Savings</span>
+        <h2 class="section-title">How Much Can<br>Your Family Save?</h2>
+        <p class="section-sub">The average American family pays over $2,000 in attorney fees for documents that can be created online for under $200. Use our calculator to see your specific savings.</p>
+        <div style="margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; background: rgba(201,168,76,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">💡</div>
+            <div>
+              <div style="font-weight: 700; color: var(--white); font-size: 0.9rem;">No legal knowledge required</div>
+              <div style="font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem;">Guided step-by-step questions handle everything</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; background: rgba(201,168,76,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">🔒</div>
+            <div>
+              <div style="font-weight: 700; color: var(--white); font-size: 0.9rem;">Attorney-reviewed &amp; legally valid</div>
+              <div style="font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem;">Every document meets state/country requirements</div>
+            </div>
+          </div>
+          <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="width: 48px; height: 48px; background: rgba(201,168,76,0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0;">⚡️</div>
+            <div>
+              <div style="font-weight: 700; color: var(--white); font-size: 0.9rem;">Done in minutes, not weeks</div>
+              <div style="font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-top: 0.2rem;">No appointments, no back-and-forth emails</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="big-calc">
+        <div class="big-calc-title">💰 Your Family Savings Calculator</div>
+        <div class="calc-row">
+          <div class="calc-row-label">Number of documents needed</div>
+          <input type="range" id="numDocs" min="1" max="10" value="3" oninput="updateBigCalc()">
+          <div class="range-value" id="numDocsVal">3 documents</div>
+        </div>
+        <div class="calc-row">
+          <div class="calc-row-label">Average attorney hourly rate ($/hr)</div>
+          <input type="range" id="hourlyRate" min="150" max="600" step="50" value="300" oninput="updateBigCalc()">
+          <div class="range-value" id="hourlyVal">$300/hour</div>
+        </div>
+        <div class="calc-row">
+          <div class="calc-row-label">Estimated attorney hours per document</div>
+          <input type="range" id="hours" min="1" max="8" value="3" oninput="updateBigCalc()">
+          <div class="range-value" id="hoursVal">3 hours</div>
+        </div>
+        <div class="total-saving-box">
+          <div class="total-save-label">Your Estimated Savings</div>
+          <div class="total-save-num" id="totalSave">$2,637</div>
+          <div class="total-save-sub">vs. hiring a traditional attorney</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TODO: Remaining sections to come -->
 
 </body>
