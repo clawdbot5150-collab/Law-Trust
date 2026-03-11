@@ -156,13 +156,22 @@ app.get('/api/stats', (req, res) => {
   }
 });
 
-// Load chat routes
+// Load chat routes (legacy — replaced by bots.js)
+// try {
+//   const chatRoutes = require('./routes/chat');
+//   app.use('/api/chat', chatRoutes);
+//   console.log('✅ Chat routes loaded');
+// } catch (e) {
+//   console.log('⚠️ Chat routes not yet available');
+// }
+
+// Load bot routes (Alex, Qualifier, Decider)
 try {
-  const chatRoutes = require('./routes/chat');
-  app.use('/api/chat', chatRoutes);
-  console.log('✅ Chat routes loaded');
+  const botRoutes = require('./routes/bots');
+  app.use('/api/chat', botRoutes);
+  console.log('✅ Bot routes loaded (/api/chat/alex, /api/chat/qualify, /api/chat/decide)');
 } catch (e) {
-  console.log('⚠️ Chat routes not yet available');
+  console.log('⚠️ Bot routes error:', e.message);
 }
 
 // Load content routes
