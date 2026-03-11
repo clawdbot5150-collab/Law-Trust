@@ -70,7 +70,43 @@ nav {
 }
 .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
 
-/* TODO: Rest of CSS was cut off — paste remaining code */
+/* ===== HOW IT WORKS ===== */
+.how-section { background: var(--cream-dark); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3.5rem; position: relative; }
+.steps-grid::before { content: ''; position: absolute; top: 2.25rem; left: calc(12.5% + 1.75rem); right: calc(12.5% + 1.75rem); height: 2px; background: linear-gradient(90deg, var(--gold), transparent); background: repeating-linear-gradient(90deg, var(--gold) 0, var(--gold) 8px, transparent 8px, transparent 16px); opacity: 0.4; }
+.step-card { text-align: center; position: relative; }
+.step-num { width: 52px; height: 52px; background: var(--navy); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--gold); margin: 0 auto 1.25rem; position: relative; z-index: 1; }
+.step-title { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.85rem; color: var(--text-light); line-height: 1.65; }
+
+/* ===== CATEGORIES ===== */
+.categories-section { background: var(--white); }
+.cats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+.cat-card { background: var(--cream); border: 1.5px solid var(--cream-dark); border-radius: 14px; padding: 1.75rem; text-decoration: none; transition: all 0.25s; display: flex; flex-direction: column; gap: 0.75rem; }
+.cat-card:hover { border-color: var(--gold); box-shadow: 0 6px 30px rgba(0,0,0,0.07); transform: translateY(-2px); }
+.cat-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+.cat-name { font-weight: 700; font-size: 1rem; color: var(--navy); }
+.cat-count { font-size: 0.8rem; color: var(--text-light); }
+.cat-arrow { margin-top: auto; color: var(--gold); font-size: 1.2rem; font-weight: 700; transition: transform 0.2s; }
+.cat-card:hover .cat-arrow { transform: translateX(4px); }
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-section { background: var(--cream); }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.testi-card { background: var(--white); border: 1.5px solid var(--cream-dark); border-radius: 14px; padding: 1.75rem; }
+.testi-stars { color: var(--gold); font-size: 0.9rem; margin-bottom: 1rem; }
+.testi-quote { font-size: 0.9rem; color: var(--text-light); line-height: 1.7; margin-bottom: 1.25rem; font-style: italic; }
+.testi-author { display: flex; align-items: center; gap: 0.75rem; }
+.testi-avatar { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; color: var(--white); }
+.testi-name { font-weight: 700; font-size: 0.875rem; color: var(--navy); }
+.testi-location { font-size: 0.75rem; color: var(--text-light); }
+
+/* ===== SAVINGS BANNER ===== */
+.banner { background: linear-gradient(135deg, var(--navy), #1a3a5c); padding: 5rem 2rem; text-align: center; position: relative; overflow: hidden; }
+.banner::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(201,168,76,0.1) 0%, transparent 60%); }
+.banner-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+/* TODO: More CSS to come */
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
