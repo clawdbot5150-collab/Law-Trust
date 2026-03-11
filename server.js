@@ -174,6 +174,24 @@ try {
   console.log('⚠️ Content routes not yet available');
 }
 
+// Load leads routes
+try {
+  const leadsRoutes = require('./routes/leads');
+  app.use('/api/leads', leadsRoutes);
+  console.log('✅ Leads routes loaded');
+} catch (e) {
+  console.log('⚠️ Leads routes error:', e.message);
+}
+
+// Load buyers routes
+try {
+  const buyersRoutes = require('./routes/buyers');
+  app.use('/api/buyers', buyersRoutes);
+  console.log('✅ Buyers routes loaded');
+} catch (e) {
+  console.log('⚠️ Buyers routes error:', e.message);
+}
+
 // Start scheduler
 try {
   require('./crons/scheduler');
