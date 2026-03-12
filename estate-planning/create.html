@@ -156,13 +156,20 @@ async function launch() {
       return;
     }
 
-    // Check if user has this service paid
-    const meResp = await fetch(API + '/me', { headers:{'x-session-token':token} });
-    const me = await meResp.json();
-    const isPaid = !!me.user[service];
-
-    if (!isPaid) {
-      document.getElementById('upsell-banner').classList.add('visible');
+    // Show upsell/warning banners based on API response
+    if (data.mem_expired) {
+      // Membership expired — still works but download limited to page 1
+      const banner = document.getElementById('upsell-banner');
+      banner.querySelector('.upsell-text strong').textContent = '⏰ Membership Expired';
+      banner.querySelector('.upsell-text p').textContent = data.mem_warning;
+      banner.classList.add('visible');
+    } else {
+      // Check if this specific service is paid for
+      const meResp = await fetch(API + '/me', { headers:{'x-session-token':token} });
+      const me = await meResp.json();
+      if (!me.user[service]) {
+        document.getElementById('upsell-banner').classList.add('visible');
+      }
     }
 
     // Populate hidden form and submit into iframe
