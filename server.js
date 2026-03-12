@@ -13,6 +13,10 @@ const PORT = process.env.PORT || 3011;
 app.use(cors());
 app.use(helmet());
 app.use(compression());
+
+// Stripe webhook needs raw body — must be registered BEFORE express.json()
+app.use('/api/wl/webhook', express.raw({ type: 'application/json' }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -125,7 +129,8 @@ app.get('/go/:slug/:source', (req, res) => {
       slug, source, ip_hash, new Date().toISOString()
     );
 
-    const utmUrl = `${product.affiliate_url}?utm_source=law-trust&utm_medium=comparison&utm_campaign=${encodeURIComponent(source)}`;
+    const sep = product.affiliate_url.includes('?') ? '&' : '?';
+    const utmUrl = `${product.affiliate_url}${sep}utm_source=law-trust&utm_medium=comparison&utm_campaign=${encodeURIComponent(source)}`;
     res.redirect(302, utmUrl);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -199,6 +204,15 @@ try {
   console.log('✅ Buyers routes loaded');
 } catch (e) {
   console.log('⚠️ Buyers routes error:', e.message);
+}
+
+// Load White Label API routes
+try {
+  const wlRoutes = require('./routes/whitelabel');
+  app.use('/api/wl', wlRoutes);
+  console.log('✅ White Label API routes loaded (/api/wl/*)');
+} catch (e) {
+  console.log('⚠️ White Label routes error:', e.message);
 }
 
 // Start scheduler
