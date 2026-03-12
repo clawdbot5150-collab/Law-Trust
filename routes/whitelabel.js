@@ -95,9 +95,104 @@ async function wlEncrypt(value) {
 
 // ─── Helper: generate unique WL credentials ──────────────────────────────────
 function generateWlCreds() {
-  const userid = 'lt_' + crypto.randomBytes(8).toString('hex'); // lt_ + 16 hex chars = 19 chars
+  const userid = 'lt_' + crypto.randomBytes(8).toString('hex'); // 19 chars, unique
   const password = crypto.randomBytes(12).toString('base64').replace(/[^a-zA-Z0-9]/g, '').slice(0, 20);
   return { userid, password };
+}
+
+// ─── Result code map — user-facing messages + severity ───────────────────────
+const WL_RESULT = {
+  // ✅ Success / acceptable
+  OK:                       { ok: true,  retry: false, msg: null },
+  MEM_EXPIRED:              { ok: true,  retry: false, msg: null, warn: 'Membership expired — document preview only. Renew to download.' },
+  EXISTING_USERID:          { ok: false, retry: true,  msg: 'UserID collision — retrying with new ID.' },
+
+  // 🔄 Retriable errors
+  ENCRYPTION_EXPIRED:       { ok: false, retry: true,  msg: 'Session token expired — retrying.' },
+  DECRYPTION_FAILURE:       { ok: false, retry: true,  msg: 'Encryption error — retrying.' },
+  NO_SUCH_USERID:           { ok: false, retry: true,  msg: 'Account not found on service — recreating.' },
+
+  // 🚨 Admin alerts (something is seriously wrong on our end)
+  INVALID_CREDENTIALS:      { ok: false, retry: false, alert: true, msg: 'Affiliate credentials are invalid. Contact support.' },
+  BANNED_IP:                { ok: false, retry: false, alert: true, msg: 'Server IP address has been banned. Email support@uslegalwills.com immediately.' },
+  SUSPENDED_USERID:         { ok: false, retry: false, alert: true, msg: 'This user account has been suspended. Email support@uslegalwills.com.' },
+  BANNED_USERID:            { ok: false, retry: false, alert: true, msg: 'This user account has been banned. Email support@uslegalwills.com.' },
+
+  // ⚠️ User data errors (fixable by the user)
+  BAD_ADDRESS_LINE1:        { ok: false, retry: false, msg: 'Address line 1 is too long (max 128 characters).' },
+  BAD_ADDRESS_LINE2:        { ok: false, retry: false, msg: 'Address line 2 is too long (max 128 characters).' },
+  BAD_CITY:                 { ok: false, retry: false, msg: 'City name is too long (max 64 characters).' },
+  BAD_COUNTRY:              { ok: false, retry: false, msg: 'Country name is too long (max 64 characters).' },
+  BAD_EMAIL:                { ok: false, retry: false, msg: 'Email address must be between 1 and 64 characters.' },
+  BAD_FIRST_NAME:           { ok: false, retry: false, msg: 'First name must be between 1 and 64 characters.' },
+  BAD_LAST_NAME:            { ok: false, retry: false, msg: 'Last name must be between 1 and 64 characters.' },
+  BAD_PASSWORD:             { ok: false, retry: false, msg: 'Password must be between 5 and 64 characters.' },
+  BAD_POSTALCODE:           { ok: false, retry: false, msg: 'Postal/ZIP code is too long (max 32 characters).' },
+  BAD_STATEPROV:            { ok: false, retry: false, msg: 'State/province name is too long (max 64 characters).' },
+  BAD_USERID:               { ok: false, retry: false, msg: 'Invalid UserID format.' },
+  DUPLICATE_USER:           { ok: false, retry: false, msg: 'An account with this name and email already exists. Please sign in instead.' },
+  INVALID_COUNTRY:          { ok: false, retry: false, msg: 'The selected country is not supported for document creation.' },
+  INVALID_EMAIL:            { ok: false, retry: false, msg: 'Invalid email address format.' },
+  INVALID_GENDER:           { ok: false, retry: false, msg: 'Invalid gender value.' },
+  INVALID_LOGIN:            { ok: false, retry: false, msg: 'Invalid login credentials. Please contact support.' },
+  INVALID_SERVICE_NAME:     { ok: false, retry: false, msg: 'Invalid document type requested.' },
+  INVALID_STATEPROV:        { ok: false, retry: false, msg: 'Invalid state/province. Please check the spelling.' },
+  INVALID_MEM_YEARS:        { ok: false, retry: false, msg: 'Invalid membership duration.' },
+  INVALID_MEM_YEARS_OP:     { ok: false, retry: false, msg: 'Invalid membership operation.' },
+  MISSING_COUNTRY:          { ok: false, retry: false, msg: 'Country is required.' },
+  MISSING_EMAIL:            { ok: false, retry: false, msg: 'Email is required.' },
+  MISSING_FIRST_NAME:       { ok: false, retry: false, msg: 'First name is required.' },
+  MISSING_LAST_NAME:        { ok: false, retry: false, msg: 'Last name is required.' },
+  MISSING_PASSWORD:         { ok: false, retry: false, msg: 'Password is required.' },
+  MISSING_SERVICE_NAME:     { ok: false, retry: false, msg: 'Document type is required.' },
+  MISSING_USERID:           { ok: false, retry: false, msg: 'UserID is required.' },
+  IS_LIFETIME:              { ok: false, retry: false, msg: 'User already has a lifetime membership.' },
+  IS_NOT_LIFETIME:          { ok: false, retry: false, msg: 'User does not have a lifetime membership.' },
+  TOO_FEW_YEARS:            { ok: false, retry: false, msg: 'This would result in less than 1 year of membership.' },
+  TOO_MANY_YEARS:           { ok: false, retry: false, msg: 'This would exceed the maximum membership length.' },
+
+  // Service flag errors (should never happen in normal flow — indicates code bug)
+  INVALID_MYWILL:           { ok: false, retry: false, msg: 'Internal error: invalid MYWILL flag.', bug: true },
+  INVALID_MYPOWEROFATTORNEY:{ ok: false, retry: false, msg: 'Internal error: invalid MYPOWEROFATTORNEY flag.', bug: true },
+  INVALID_MYLIVINGWILL:     { ok: false, retry: false, msg: 'Internal error: invalid MYLIVINGWILL flag.', bug: true },
+  INVALID_MYLIFELOCKER:     { ok: false, retry: false, msg: 'Internal error: invalid MYLIFELOCKER flag.', bug: true },
+  INVALID_MYFUNERAL:        { ok: false, retry: false, msg: 'Internal error: invalid MYFUNERAL flag.', bug: true },
+  INVALID_MYEXPATWILL_US:   { ok: false, retry: false, msg: 'Internal error: invalid MYEXPATWILL_US flag.', bug: true },
+  INVALID_MYEXPATWILL_CANADA:{ ok: false, retry: false, msg: 'Internal error: invalid MYEXPATWILL_CANADA flag.', bug: true },
+  INVALID_MYEXPATWILL_QUEBEC:{ ok: false, retry: false, msg: 'Internal error: invalid MYEXPATWILL_QUEBEC flag.', bug: true },
+  INVALID_MYEXPATWILL_UK:   { ok: false, retry: false, msg: 'Internal error: invalid MYEXPATWILL_UK flag.', bug: true },
+  INVALID_CMD:              { ok: false, retry: false, msg: 'Internal error: invalid API command.', bug: true },
+};
+
+// ─── Interpret a WL result code and optionally send an admin alert ────────────
+function interpretResult(code, context = '') {
+  const entry = WL_RESULT[code] || { ok: false, retry: false, msg: `Unexpected error: ${code}` };
+
+  if (entry.alert || entry.bug) {
+    const level = entry.bug ? '🐛 BUG' : '🚨 ALERT';
+    console.error(`[WL ${level}] ${code} — ${context} — ${entry.msg}`);
+    // Send Telegram alert for critical issues
+    alertAdmin(`${level}: LegalWills API returned ${code}\n${context}\n${entry.msg}`);
+  } else if (!entry.ok && !entry.retry) {
+    console.warn(`[WL WARN] ${code} — ${context}`);
+  }
+
+  return entry;
+}
+
+// ─── Telegram admin alert ─────────────────────────────────────────────────────
+async function alertAdmin(message) {
+  const token = process.env.TELEGRAM_BOT_TOKEN || '8659195374:AAGVydpl_rMlw-O-Y3dgTNMsvhMq8Bi25WE';
+  const chatId = process.env.TELEGRAM_CHAT_ID || '6928347196';
+  try {
+    await axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
+      chat_id: chatId,
+      text: `⚖️ Law-Trust WL API Alert\n\n${message}`,
+      parse_mode: 'HTML'
+    });
+  } catch (e) {
+    console.error('[Alert Error]', e.message);
+  }
 }
 
 // ─── Helper: session auth middleware ─────────────────────────────────────────
@@ -132,13 +227,13 @@ router.post('/register', async (req, res) => {
 
   try {
     const passwordHash = await bcrypt.hash(password, 12);
-    const { userid, password: wlPass } = generateWlCreds();
+    let { userid, password: wlPass } = generateWlCreds();
 
-    // Create user in LegalWills database
-    const wlResult = await wlApi({
+    // Build the create_user payload
+    const buildPayload = (uid, pwd) => ({
       CMD: 'create_user',
-      USERID: userid,
-      PASSWORD: wlPass,
+      USERID: uid,
+      PASSWORD: pwd,
       FIRST_NAME: first_name,
       LAST_NAME: last_name,
       EMAIL: email,
@@ -152,10 +247,32 @@ router.post('/register', async (req, res) => {
       TEST_USER: 'N'
     });
 
-    const wlCreated = wlResult.ResultCode === 'OK' ? 1 : 0;
+    // Create user in LegalWills database (auto-retry on EXISTING_USERID)
+    let wlResult = await wlApi(buildPayload(userid, wlPass));
+    let entry = interpretResult(wlResult.ResultCode, `register: ${email}`);
+
+    if (entry.retry && wlResult.ResultCode === 'EXISTING_USERID') {
+      // Collision — regenerate credentials and try once more
+      const fresh = generateWlCreds();
+      userid = fresh.userid; wlPass = fresh.password;
+      wlResult = await wlApi(buildPayload(userid, wlPass));
+      entry = interpretResult(wlResult.ResultCode, `register retry: ${email}`);
+    }
+
+    // DUPLICATE_USER means same first+last+email exists under a different UID
+    if (wlResult.ResultCode === 'DUPLICATE_USER') {
+      return res.status(409).json({ error: entry.msg });
+    }
+
+    // Hard failures from invalid credentials / banned IP — abort
+    if (entry.alert) {
+      return res.status(503).json({ error: 'Service temporarily unavailable. Please try again later.' });
+    }
+
+    // For any other non-OK code, we store locally and sync later
+    const wlCreated = (wlResult.ResultCode === 'OK') ? 1 : 0;
     if (!wlCreated) {
-      console.warn('[WL] create_user returned:', wlResult.ResultCode,
-        '— storing user locally anyway');
+      console.warn('[WL] create_user returned:', wlResult.ResultCode, '— storing locally, will sync on first launch');
     }
 
     // Generate session
@@ -239,63 +356,93 @@ router.post('/launch', requireAuth, async (req, res) => {
     return res.status(400).json({ error: 'Invalid service name' });
   }
 
-  // If WL credentials not yet created, create user now
-  if (!user.wl_created) {
-    const wlResult = await wlApi({
+  // ── Ensure WL account exists (lazy creation / re-creation) ──────────────────
+  const ensureWlUser = async () => {
+    const r = await wlApi({
       CMD: 'create_user',
-      USERID: user.wl_userid,
-      PASSWORD: user.wl_password,
-      FIRST_NAME: user.first_name,
-      LAST_NAME: user.last_name,
-      EMAIL: user.email,
-      COUNTRY: user.country,
+      USERID: user.wl_userid, PASSWORD: user.wl_password,
+      FIRST_NAME: user.first_name, LAST_NAME: user.last_name,
+      EMAIL: user.email, COUNTRY: user.country,
       ...(user.stateprov && { STATEPROV: user.stateprov }),
-      MEM_YEARS: '1',
-      TEST_USER: 'N'
+      MEM_YEARS: '1', TEST_USER: 'N'
     });
-    if (wlResult.ResultCode === 'OK' || wlResult.ResultCode === 'USER_EXISTS') {
+    // OK = created, EXISTING_USERID = already there — both are fine
+    if (r.ResultCode === 'OK' || r.ResultCode === 'EXISTING_USERID') {
       db.prepare("UPDATE wl_users SET wl_created=1 WHERE id=?").run(user.id);
+      return true;
     }
-  }
+    interpretResult(r.ResultCode, `ensureWlUser: ${user.email}`);
+    return false;
+  };
+
+  if (!user.wl_created) await ensureWlUser();
 
   try {
-    // Step 1: Encrypt USERID + PASSWORD (5-min TTL, used for both validate + login)
-    // Per API docs: validate_login AND login both require encrypted credentials
-    const [encUserId, encPassword] = await Promise.all([
-      wlEncrypt(user.wl_userid),
-      wlEncrypt(user.wl_password)
-    ]);
+    // ── Helper: full encrypt + validate cycle, returns {encUserId, encPassword} ─
+    const encryptAndValidate = async () => {
+      const [encUserId, encPassword] = await Promise.all([
+        wlEncrypt(user.wl_userid),
+        wlEncrypt(user.wl_password)
+      ]);
+      const validation = await wlApi({
+        CMD: 'validate_login',
+        USERID: encUserId,
+        PASSWORD: encPassword,
+        SERVICE_NAME: service_name.toLowerCase()
+      });
+      return { encUserId, encPassword, code: validation.ResultCode };
+    };
 
-    // Step 2: Validate login using the encrypted credentials
-    // This catches errors before the user ever sees the iframe
-    const validation = await wlApi({
-      CMD: 'validate_login',
-      USERID: encUserId,       // ← encrypted, per API docs
-      PASSWORD: encPassword,   // ← encrypted, per API docs
-      SERVICE_NAME: service_name.toLowerCase()
-    });
+    let { encUserId, encPassword, code } = await encryptAndValidate();
+    let entry = interpretResult(code, `launch: ${user.email} → ${service_name}`);
 
-    if (validation.ResultCode !== 'OK' && validation.ResultCode !== 'MEM_EXPIRED') {
-      console.warn('[WL validate_login]', user.wl_userid, '->', validation.ResultCode);
+    // ── Auto-retry cases ──────────────────────────────────────────────────────
+    if (code === 'ENCRYPTION_EXPIRED' || code === 'DECRYPTION_FAILURE') {
+      // Encrypted values staled — re-encrypt immediately and retry once
+      console.log('[WL] Re-encrypting after', code);
+      ({ encUserId, encPassword, code } = await encryptAndValidate());
+      entry = interpretResult(code, `launch retry (re-encrypt): ${user.email}`);
+    }
+
+    if (code === 'NO_SUCH_USERID') {
+      // Account vanished from LegalWills DB — recreate and retry
+      console.log('[WL] NO_SUCH_USERID — recreating WL account for', user.email);
+      const ok = await ensureWlUser();
+      if (!ok) return res.status(503).json({ error: 'Could not recreate document account. Please contact support.' });
+      ({ encUserId, encPassword, code } = await encryptAndValidate());
+      entry = interpretResult(code, `launch retry (recreate): ${user.email}`);
+    }
+
+    // ── Hard failures ─────────────────────────────────────────────────────────
+    if (entry.alert) {
+      return res.status(503).json({ error: 'Service temporarily unavailable. Our team has been alerted.' });
+    }
+
+    // ── Non-retriable failures ────────────────────────────────────────────────
+    if (!entry.ok && !entry.retry) {
       return res.status(400).json({
-        error: 'Account validation failed',
-        code: validation.ResultCode
+        error: entry.msg || 'Could not open document editor.',
+        code
       });
     }
 
-    // Step 3: Return encrypted credentials to frontend for the POST login form
-    // The same encrypted values work for the login form (within the 5-min TTL)
+    // ── MEM_EXPIRED — allow through but inform frontend to show upsell ────────
+    const memExpired = (code === 'MEM_EXPIRED');
+
+    // ── Success — return encrypted credentials for iframe POST form ───────────
     res.json({
       success: true,
       wl_url: WL_URL,
       affiliate_id: AFFILIATE_ID,
       encrypted_userid: encUserId,
       encrypted_password: encPassword,
-      service_name: service_name.toLowerCase()
+      service_name: service_name.toLowerCase(),
+      mem_expired: memExpired,
+      mem_warning: memExpired ? 'Your membership has expired. You can still edit your document, but can only download the first page. Renew to download the full document.' : null
     });
   } catch (err) {
     console.error('[WL Launch Error]', err.message);
-    res.status(500).json({ error: err.message });
+    res.status(500).json({ error: 'Failed to open document editor. Please try again.' });
   }
 });
 
