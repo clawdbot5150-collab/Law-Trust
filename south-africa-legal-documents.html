@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en-GB">
+<html lang="en-ZA">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Write a Will Online UK — Wills, LPA & Living Wills | Law-Trust.com</title>
-  <meta name="description" content="Write your UK will online in minutes. Lawyer-approved wills, Lasting Power of Attorney, and living wills for England, Wales, Scotland & Northern Ireland. Save up to £1,200 vs. a solicitor.">
-  <link rel="canonical" href="https://law-trust.com/uk-legal-wills.html">
-  <meta property="og:title" content="Write a Will Online UK — Lawyer-Approved | Law-Trust.com">
-  <meta property="og:description" content="Write your UK will online. Lawyer-approved, jurisdiction-specific for England, Wales, Scotland & Northern Ireland. Start today — 10% off.">
-  <meta property="og:url" content="https://law-trust.com/uk-legal-wills.html">
+  <title>Write a Will Online South Africa — Legal Wills & POA | Law-Trust.com</title>
+  <meta name="description" content="Write your South African will online in minutes. Lawyer-approved wills, power of attorney & living wills for all 9 provinces. Save up to R15,000 vs. an attorney. 10% off today.">
+  <link rel="canonical" href="https://law-trust.com/south-africa-legal-documents.html">
+  <meta property="og:title" content="Write a Will Online South Africa — Lawyer-Approved | Law-Trust.com">
+  <meta property="og:description" content="Create your South African will, power of attorney, or living will online. Province-specific, lawyer-approved. Start today — 10% off.">
+  <meta property="og:url" content="https://law-trust.com/south-africa-legal-documents.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -31,11 +31,11 @@
       --text: #1a1a2e;
       --text-light: #6b7280;
       --red: #dc2626;
+      --sa-green: #007a4d;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text); }
 
-    /* NAV */
     nav { background: var(--navy); padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.75rem; }
     .nav-logo { font-family: 'Playfair Display', serif; color: var(--gold); font-size: 1.3rem; font-weight: 700; text-decoration: none; }
     .nav-links { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
@@ -43,7 +43,6 @@
     .nav-links a:hover { color: var(--gold); }
     .nav-cta { background: var(--gold); color: var(--navy) !important; padding: 0.5rem 1.2rem; border-radius: 6px; font-weight: 600 !important; }
 
-    /* HERO */
     .hero { background: linear-gradient(135deg, var(--navy) 0%, #1a2f4a 100%); padding: 4rem 2rem 3rem; text-align: center; }
     .hero-flag { font-size: 2.5rem; margin-bottom: 1rem; }
     .hero h1 { font-family: 'Playfair Display', serif; color: var(--white); font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1.2; margin-bottom: 1rem; }
@@ -52,23 +51,23 @@
     .hero-badges { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
     .badge { background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4); color: var(--gold-light); padding: 0.4rem 1rem; border-radius: 20px; font-size: 0.82rem; font-weight: 600; }
 
-    /* TRUST BAR */
     .trust-bar { background: var(--white); border-bottom: 1px solid var(--cream-dark); padding: 1rem 2rem; }
     .trust-inner { max-width: 900px; margin: 0 auto; display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
     .trust-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-light); font-weight: 500; }
     .trust-item span:first-child { font-size: 1.1rem; }
 
-    /* JURISDICTIONS */
-    .jx-section { background: var(--white); padding: 2.5rem 2rem; text-align: center; border-bottom: 1px solid var(--cream-dark); }
-    .jx-section h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--navy); }
-    .jx-section p { color: var(--text-light); font-size: 0.88rem; margin-bottom: 1.25rem; }
-    .jx-grid { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; max-width: 700px; margin: 0 auto; }
-    .jx-card { background: var(--cream); border: 1.5px solid var(--cream-dark); border-radius: 12px; padding: 1rem 1.5rem; text-align: center; min-width: 140px; }
-    .jx-card .flag { font-size: 1.8rem; margin-bottom: 0.4rem; }
-    .jx-card .name { font-weight: 600; font-size: 0.9rem; color: var(--navy); }
-    .jx-card .note { font-size: 0.75rem; color: var(--text-light); margin-top: 0.25rem; }
+    .provinces-section { background: var(--white); padding: 2.5rem 2rem; text-align: center; border-bottom: 1px solid var(--cream-dark); }
+    .provinces-section h2 { font-family: 'Playfair Display', serif; font-size: 1.4rem; margin-bottom: 0.5rem; color: var(--navy); }
+    .provinces-section p { color: var(--text-light); font-size: 0.88rem; margin-bottom: 1.25rem; }
+    .province-list { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; max-width: 720px; margin: 0 auto; }
+    .province-tag { background: var(--cream); border: 1px solid var(--cream-dark); border-radius: 20px; padding: 0.35rem 0.9rem; font-size: 0.82rem; color: var(--text); font-weight: 500; }
 
-    /* DOCS SECTION */
+    /* ALERT BOX */
+    .alert-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px solid #f59e0b; border-radius: 12px; padding: 1.25rem 1.5rem; margin: 2rem auto; max-width: 900px; display: flex; gap: 1rem; align-items: flex-start; }
+    .alert-box .icon { font-size: 1.5rem; flex-shrink: 0; }
+    .alert-box h3 { font-size: 0.95rem; font-weight: 600; color: #92400e; margin-bottom: 0.3rem; }
+    .alert-box p { font-size: 0.85rem; color: #78350f; line-height: 1.6; }
+
     .docs-section { padding: 3rem 2rem; max-width: 960px; margin: 0 auto; }
     .docs-section h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; text-align: center; margin-bottom: 0.5rem; }
     .docs-section .subtitle { text-align: center; color: var(--text-light); margin-bottom: 2rem; }
@@ -78,39 +77,33 @@
     .doc-card p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
     .doc-icon { font-size: 1.5rem; margin-bottom: 0.75rem; }
 
-    /* SAVINGS */
     .savings-section { background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border: 1px solid #bae6fd; border-radius: 16px; padding: 2rem; margin: 0 auto 3rem; max-width: 900px; text-align: center; }
     .savings-section h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--navy); margin-bottom: 1.5rem; }
     .savings-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; }
     .savings-item { background: var(--white); border-radius: 10px; padding: 1rem; }
     .savings-item .doc-name { font-size: 0.8rem; color: var(--text-light); margin-bottom: 0.25rem; }
-    .savings-item .solicitor { color: var(--red); font-size: 0.85rem; text-decoration: line-through; }
+    .savings-item .attorney { color: var(--red); font-size: 0.85rem; text-decoration: line-through; }
     .savings-item .online { color: #16a34a; font-weight: 700; font-size: 1.1rem; }
     .savings-item .save { font-size: 0.75rem; color: var(--text-light); }
 
-    /* EMBED SECTION */
     .embed-section { padding: 1rem 2rem 3rem; max-width: 1100px; margin: 0 auto; }
     .embed-header { text-align: center; margin-bottom: 2rem; }
     .embed-header h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--navy); margin-bottom: 0.5rem; }
     .embed-header p { color: var(--text-light); }
     .embed-wrapper { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
 
-    /* FAQ */
     .faq-section { padding: 3rem 2rem; max-width: 760px; margin: 0 auto; }
     .faq-section h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; text-align: center; margin-bottom: 2rem; }
     .faq-item { background: var(--white); border: 1px solid var(--cream-dark); border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; }
     .faq-item h3 { font-size: 0.95rem; font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; }
     .faq-item p { font-size: 0.88rem; color: var(--text-light); line-height: 1.6; }
 
-    /* FOOTER */
     footer { background: var(--navy); color: rgba(255,255,255,0.6); padding: 2rem; text-align: center; font-size: 0.82rem; }
     footer a { color: var(--gold); text-decoration: none; }
     .disclaimer { background: #fefce8; border: 1px solid #fde68a; border-radius: 8px; padding: 0.75rem 1rem; margin: 0 auto 2rem; max-width: 900px; font-size: 0.8rem; color: #92400e; }
 
     @media (max-width: 600px) {
       .nav-links { gap: 0.75rem; }
-      .jx-grid { gap: 0.75rem; }
-      .jx-card { min-width: 120px; padding: 0.75rem 1rem; }
     }
   </style>
 
@@ -121,50 +114,50 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Is an online will legally valid in the UK?",
+        "name": "Is an online will legally valid in South Africa?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. LegalWills.co.uk documents are lawyer-approved and comply with the specific legal requirements for England, Wales, Scotland, and Northern Ireland. A properly signed and witnessed will is legally valid throughout the UK."
+          "text": "Yes. LegalWills.co.za documents comply with the Wills Act 7 of 1953. A properly signed and witnessed will is fully legally valid in South Africa and can be filed with the Master of the High Court."
         }
       },
       {
         "@type": "Question",
-        "name": "How many witnesses do I need for a UK will?",
+        "name": "How many witnesses do I need for a South African will?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A UK will requires two independent adult witnesses who are present when you sign. Witnesses cannot be beneficiaries or spouses of beneficiaries. LegalWills.co.uk provides clear signing instructions tailored to your jurisdiction."
+          "text": "A South African will requires two competent witnesses who are present when you sign. Witnesses must be over 14 years old and cannot be beneficiaries of the will."
         }
       },
       {
         "@type": "Question",
-        "name": "What is a Lasting Power of Attorney (LPA)?",
+        "name": "What happens if I die without a will in South Africa?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "An LPA lets you appoint someone to make decisions on your behalf if you lose mental capacity. There are two types: Property & Financial Affairs, and Health & Welfare. Both must be registered with the Office of the Public Guardian."
+          "text": "Dying intestate in South Africa means your estate is distributed according to the Intestate Succession Act 81 of 1987. Your assets may not go to who you intended, and your unmarried partner may receive nothing. The executor's fee (up to 3.5% + VAT) still applies."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I update my will for free?",
+        "name": "What is Estate Duty in South Africa?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes — LegalWills.co.uk offers free lifetime updates. As your circumstances change (marriage, divorce, new children, property) you can revise your documents at any time at no additional charge."
+          "text": "SARS levies Estate Duty at 20% on estates above R3.5 million (30% above R30 million). Proper estate planning — including a valid will — can help minimise your estate duty liability."
         }
       },
       {
         "@type": "Question",
-        "name": "Does Scottish law differ from English law for wills?",
+        "name": "Can I update my will after completing it?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Scottish succession law differs significantly — including 'prior rights' and 'legal rights' (legitim) that entitle spouses and children to a share regardless of the will. LegalWills.co.uk produces jurisdiction-specific documents for Scotland."
+          "text": "Yes — LegalWills.co.za offers free lifetime updates. As your circumstances change (marriage, children, property, divorce) you can revise your documents at any time at no additional charge."
         }
       },
       {
         "@type": "Question",
-        "name": "What happens if I die without a will in the UK?",
+        "name": "I'm a South African living abroad — do I need a SA will?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Dying intestate (without a will) means UK intestacy rules decide who inherits — which may not reflect your wishes. Unmarried partners receive nothing. Your estate may also face a larger Inheritance Tax bill without proper planning."
+          "text": "Yes, if you have assets in South Africa. A South African will covers your SA-based assets. For assets in your country of residence, an Expatriate Will is recommended — specifically designed for South Africans and others living outside their home country."
         }
       }
     ]
@@ -178,21 +171,20 @@
   <div class="nav-links">
     <a href="/#compare">Compare Tools</a>
     <a href="/blog/">Blog</a>
-    <a href="/canada-legal-documents.html">Canada</a>
-    <a href="/us-legal-wills.html">US</a>
-    <a href="https://www.legalwills.co.uk/?refcode=a998680357" class="nav-cta" target="_blank" rel="nofollow sponsored">Start Your Will →</a>
+    <a href="/expat-legal-will.html">Expat Wills</a>
+    <a href="https://www.legalwills.co.za/?refcode=a998680357" class="nav-cta" target="_blank" rel="nofollow sponsored">Start Your Will →</a>
   </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-flag">🇬🇧</div>
+  <div class="hero-flag">🇿🇦</div>
   <div style="display:inline-block; background:var(--gold); color:var(--navy); font-weight:700; padding:0.5rem 1.4rem; border-radius:8px; font-size:0.95rem; margin-bottom:1rem;">🎉 Exclusive: 10% Off All Documents</div>
-  <h1>Write Your Will Online in the UK<br><span>Lawyer-Approved in Minutes</span></h1>
-  <p>Jurisdiction-specific wills, Lasting Power of Attorney, and living wills for England, Wales, Scotland &amp; Northern Ireland. Save up to £1,200 vs. a solicitor.</p>
+  <h1>Write Your Will Online<br><span>in South Africa</span></h1>
+  <p>Lawyer-approved wills, power of attorney, and living wills for all 9 South African provinces. Compliant with the Wills Act. Save up to R15,000 vs. an attorney.</p>
   <div class="hero-badges">
-    <span class="badge">✓ England, Wales, Scotland &amp; NI</span>
-    <span class="badge">✓ Solicitor-Approved</span>
+    <span class="badge">✓ All 9 Provinces</span>
+    <span class="badge">✓ Wills Act Compliant</span>
     <span class="badge">✓ Free Lifetime Updates</span>
     <span class="badge">✓ Trusted Since 2000</span>
   </div>
@@ -201,7 +193,7 @@
 <!-- TRUST BAR -->
 <div class="trust-bar">
   <div class="trust-inner">
-    <div class="trust-item"><span>👨‍⚖️</span><span>Solicitor-reviewed documents</span></div>
+    <div class="trust-item"><span>👨‍⚖️</span><span>Lawyer-reviewed documents</span></div>
     <div class="trust-item"><span>🔒</span><span>Secure &amp; private</span></div>
     <div class="trust-item"><span>♻️</span><span>Update anytime, free</span></div>
     <div class="trust-item"><span>📱</span><span>Works on any device</span></div>
@@ -209,30 +201,30 @@
   </div>
 </div>
 
-<!-- JURISDICTIONS -->
-<div class="jx-section">
-  <h2>Covering All UK Jurisdictions</h2>
-  <p>Each document is tailored to the specific succession laws of your jurisdiction</p>
-  <div class="jx-grid">
-    <div class="jx-card">
-      <div class="flag">🏴󠁧󠁢󠁥󠁮󠁧󠁿</div>
-      <div class="name">England</div>
-      <div class="note">Wills Act 1837</div>
-    </div>
-    <div class="jx-card">
-      <div class="flag">🏴󠁧󠁢󠁷󠁬󠁳󠁿</div>
-      <div class="name">Wales</div>
-      <div class="note">Wills Act 1837</div>
-    </div>
-    <div class="jx-card">
-      <div class="flag">🏴󠁧󠁢󠁳󠁣󠁴󠁿</div>
-      <div class="name">Scotland</div>
-      <div class="note">Succession (Scot) Act 1964</div>
-    </div>
-    <div class="jx-card">
-      <div class="flag">🇮🇪</div>
-      <div class="name">Northern Ireland</div>
-      <div class="note">Wills &amp; Administration Act</div>
+<!-- PROVINCES -->
+<div class="provinces-section">
+  <h2>Available in All 9 South African Provinces</h2>
+  <p>Documents are tailored to South African succession law under the Wills Act 7 of 1953</p>
+  <div class="province-list">
+    <span class="province-tag">🟩 Gauteng</span>
+    <span class="province-tag">🟩 Western Cape</span>
+    <span class="province-tag">🟩 KwaZulu-Natal</span>
+    <span class="province-tag">🟩 Eastern Cape</span>
+    <span class="province-tag">🟩 Limpopo</span>
+    <span class="province-tag">🟩 Mpumalanga</span>
+    <span class="province-tag">🟩 North West</span>
+    <span class="province-tag">🟩 Free State</span>
+    <span class="province-tag">🟩 Northern Cape</span>
+  </div>
+</div>
+
+<!-- ALERT: Estate Duty -->
+<div class="alert-box" style="margin: 2rem auto; max-width: 900px; padding: 0 2rem;">
+  <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px solid #f59e0b; border-radius: 12px; padding: 1.25rem 1.5rem; display: flex; gap: 1rem; align-items: flex-start;">
+    <span style="font-size:1.5rem; flex-shrink:0;">⚠️</span>
+    <div>
+      <h3 style="font-size:0.95rem; font-weight:600; color:#92400e; margin-bottom:0.3rem;">Did You Know? 70% of South Africans Die Without a Valid Will</h3>
+      <p style="font-size:0.85rem; color:#78350f; line-height:1.6;">Without a will, the Intestate Succession Act decides who inherits — not you. Executor's fees (up to 3.5% + VAT of your estate) still apply, and SARS Estate Duty (20% above R3.5m) can take a significant portion. A will protects your family and your legacy.</p>
     </div>
   </div>
 </div>
@@ -240,68 +232,68 @@
 <!-- DOCUMENTS -->
 <section class="docs-section">
   <h2>What You Can Create</h2>
-  <p class="subtitle">All documents are jurisdiction-specific and solicitor-approved</p>
+  <p class="subtitle">All documents comply with South African succession law and are lawyer-approved</p>
   <div class="docs-grid">
     <div class="doc-card">
       <div class="doc-icon">📜</div>
       <h3>Last Will &amp; Testament</h3>
-      <p>Distribute your estate as you wish. Name guardians for your children. Appoint an executor. Minimise Inheritance Tax exposure with proper planning.</p>
+      <p>Distribute your estate exactly as you wish. Name guardians for your children. Appoint an executor. Compliant with the Wills Act 7 of 1953.</p>
     </div>
     <div class="doc-card">
       <div class="doc-icon">✋</div>
-      <h3>Lasting Power of Attorney</h3>
-      <p>Appoint someone to manage your Property &amp; Financial Affairs or Health &amp; Welfare decisions if you lose mental capacity — registered with the OPG.</p>
+      <h3>Power of Attorney</h3>
+      <p>Appoint a trusted person to manage your financial and legal affairs if you are incapacitated — preventing costly court intervention.</p>
     </div>
     <div class="doc-card">
       <div class="doc-icon">🏥</div>
       <h3>Living Will</h3>
-      <p>Record your healthcare wishes in advance. Give your family — and the NHS — clear guidance on your treatment preferences.</p>
-    </div>
-    <div class="doc-card">
-      <div class="doc-icon">👫</div>
-      <h3>Mirror Wills</h3>
-      <p>Create matching wills for you and your partner simultaneously — the simplest way for couples to protect each other and your children.</p>
+      <p>Record your end-of-life healthcare preferences in advance. Give your family and medical team clear direction during a crisis.</p>
     </div>
     <div class="doc-card">
       <div class="doc-icon">🌍</div>
       <h3>Expatriate Will</h3>
-      <p>British expat living abroad? Protect your UK and overseas assets with a legally valid international will via ExpatLegalWills.com.</p>
+      <p>South African living abroad? Protect your overseas assets with a legally valid international will via ExpatLegalWills.com.</p>
     </div>
     <div class="doc-card">
       <div class="doc-icon">🗄️</div>
       <h3>Life Locker</h3>
-      <p>Store account details, contacts, passwords, and final instructions securely — so your family can find everything they need when it matters most.</p>
+      <p>Store account details, contacts, and important instructions securely — so your executor and family can find everything they need.</p>
+    </div>
+    <div class="doc-card">
+      <div class="doc-icon">💌</div>
+      <h3>Final Messages</h3>
+      <p>Leave personal letters, heartfelt messages, or specific instructions for the people who matter most to you.</p>
     </div>
   </div>
 </section>
 
 <!-- SAVINGS -->
 <div class="savings-section">
-  <h2>How Much Will You Save vs. a Solicitor?</h2>
+  <h2>How Much Will You Save vs. an Attorney?</h2>
   <div class="savings-grid">
     <div class="savings-item">
       <div class="doc-name">Basic Will</div>
-      <div class="solicitor">£300–£500</div>
-      <div class="online">From £29</div>
-      <div class="save">Save ~£400</div>
+      <div class="attorney">R3,500–R8,000</div>
+      <div class="online">From R490</div>
+      <div class="save">Save ~R6,000</div>
     </div>
     <div class="savings-item">
-      <div class="doc-name">Mirror Wills</div>
-      <div class="solicitor">£500–£900</div>
-      <div class="online">From £49</div>
-      <div class="save">Save ~£650</div>
+      <div class="doc-name">Power of Attorney</div>
+      <div class="attorney">R2,000–R5,000</div>
+      <div class="online">From R390</div>
+      <div class="save">Save ~R3,500</div>
     </div>
     <div class="savings-item">
-      <div class="doc-name">LPA (each)</div>
-      <div class="solicitor">£400–£700</div>
-      <div class="online">From £39</div>
-      <div class="save">Save ~£500</div>
+      <div class="doc-name">Living Will</div>
+      <div class="attorney">R1,500–R4,000</div>
+      <div class="online">From R290</div>
+      <div class="save">Save ~R2,500</div>
     </div>
     <div class="savings-item">
       <div class="doc-name">Full Package</div>
-      <div class="solicitor">£1,500+</div>
-      <div class="online">From £89</div>
-      <div class="save">Save ~£1,200</div>
+      <div class="attorney">R10,000–R20,000</div>
+      <div class="online">From R990</div>
+      <div class="save">Save ~R15,000</div>
     </div>
   </div>
 </div>
@@ -309,20 +301,20 @@
 <!-- EMBED -->
 <section class="embed-section">
   <div class="embed-header">
-    <h2>Create Your UK Legal Documents Below</h2>
-    <p>Complete your will, LPA, or living will — securely, right here on this page</p>
+    <h2>Create Your South African Legal Documents Below</h2>
+    <p>Complete your will, power of attorney, or living will — securely, right here on this page</p>
   </div>
   <div class="embed-wrapper">
     <style type="text/css">iframe { border: 0 none; }</style>
-    <script type="text/javascript" src="https://www.legalwills.co.uk/Scripts/iframeResizer.min.js"></script>
-    <iframe id="legalwills" src="https://www.legalwills.co.uk/embed?affiliateid=998680357&refcode=a998680357" width="100%" scrolling="no"></iframe>
+    <script type="text/javascript" src="https://www.legalwills.co.za/Scripts/iframeResizer.min.js"></script>
+    <iframe id="legalwills" src="https://www.legalwills.co.za/embed?affiliateid=998680357&refcode=a998680357" width="100%" scrolling="no"></iframe>
     <script type="text/javascript">iFrameResize({minHeight:400}, 'iframe#legalwills');</script>
   </div>
 </section>
 
 <!-- DISCLAIMER -->
 <div class="disclaimer">
-  ⚠️ <strong>Legal Disclaimer:</strong> This page provides access to a third-party legal document service. Law-Trust.com is not a law firm and does not provide legal advice. For complex estate planning needs, consult a licensed UK solicitor.
+  ⚠️ <strong>Legal Disclaimer:</strong> This page provides access to a third-party legal document service. Law-Trust.com is not a law firm and does not provide legal advice. For complex estate planning, consult a qualified South African attorney.
   This page contains affiliate links — we may earn a commission if you purchase, at no extra cost to you.
 </div>
 
@@ -330,28 +322,28 @@
 <section class="faq-section">
   <h2>Frequently Asked Questions</h2>
   <div class="faq-item">
-    <h3>Is an online will legally valid in the UK?</h3>
-    <p>Yes. LegalWills.co.uk documents are solicitor-approved and comply with the specific legal requirements for England, Wales, Scotland, and Northern Ireland. A properly signed and witnessed will is fully legally valid.</p>
+    <h3>Is an online will legally valid in South Africa?</h3>
+    <p>Yes. LegalWills.co.za documents comply with the Wills Act 7 of 1953. A properly signed and witnessed will is fully legally valid in South Africa and can be lodged with the Master of the High Court.</p>
   </div>
   <div class="faq-item">
-    <h3>How many witnesses do I need for a UK will?</h3>
-    <p>A UK will requires two independent adult witnesses who are present when you sign. Witnesses cannot be beneficiaries or spouses of beneficiaries. LegalWills.co.uk provides clear signing instructions tailored to your jurisdiction.</p>
+    <h3>How many witnesses do I need?</h3>
+    <p>A South African will requires two competent witnesses who are present when you sign. Witnesses must be over 14 years old and cannot be beneficiaries of the will or spouses of beneficiaries.</p>
   </div>
   <div class="faq-item">
-    <h3>What is a Lasting Power of Attorney (LPA)?</h3>
-    <p>An LPA lets you appoint someone to make decisions on your behalf if you lose mental capacity. There are two types: Property &amp; Financial Affairs, and Health &amp; Welfare. Both must be registered with the Office of the Public Guardian (OPG).</p>
+    <h3>What happens if I die without a will in South Africa?</h3>
+    <p>Your estate is distributed according to the Intestate Succession Act 81 of 1987 — which may not reflect your wishes. Unmarried partners may receive nothing. Executor's fees (up to 3.5% + VAT) and SARS Estate Duty still apply regardless.</p>
   </div>
   <div class="faq-item">
-    <h3>Does Scottish law differ from English law for wills?</h3>
-    <p>Yes — significantly. Scottish succession law includes "prior rights" and "legal rights" (legitim) that entitle spouses and children to a share of your estate regardless of the will. LegalWills.co.uk produces fully Scotland-specific documents.</p>
+    <h3>What is Estate Duty and does a will help?</h3>
+    <p>SARS levies Estate Duty at 20% on dutiable estates above R3.5 million (30% above R30 million). A properly drafted will — including spousal bequests and trust planning — can significantly reduce your estate duty liability.</p>
   </div>
   <div class="faq-item">
-    <h3>What happens if I die without a will in the UK?</h3>
-    <p>Dying intestate means UK intestacy rules decide who inherits — which may not reflect your wishes. Unmarried partners receive nothing. Your estate may also face a larger Inheritance Tax bill without proper planning.</p>
+    <h3>Can I update my will for free?</h3>
+    <p>Yes — LegalWills.co.za offers free lifetime updates. Marriage, divorce, new children, or property acquisitions are all reasons to update your will, and you can do so at any time at no extra charge.</p>
   </div>
   <div class="faq-item">
-    <h3>I'm a British expat — do I need a UK will?</h3>
-    <p>Yes. If you have assets in the UK, a UK will is strongly recommended even if you live abroad. For assets in your country of residence, consider an <a href="/expat-legal-will.html" style="color:var(--navy); font-weight:600;">Expatriate Will</a> — specifically designed for people living outside their home country.</p>
+    <h3>I'm a South African living abroad — do I still need a South African will?</h3>
+    <p>Yes, if you have South African assets. A SA will covers your local estate. For overseas assets, we recommend an <a href="/expat-legal-will.html" style="color:var(--navy); font-weight:600;">Expatriate Will</a> — specifically designed for South Africans and others living outside their home country.</p>
   </div>
 </section>
 
@@ -361,14 +353,14 @@
   <div style="display:flex; gap:1rem; justify-content:center; flex-wrap:wrap;">
     <a href="/us-legal-wills.html" style="background:var(--cream); border:1px solid var(--cream-dark); padding:0.5rem 1.2rem; border-radius:8px; text-decoration:none; color:var(--text); font-size:0.88rem; font-weight:500;">🇺🇸 US Wills</a>
     <a href="/canada-legal-documents.html" style="background:var(--cream); border:1px solid var(--cream-dark); padding:0.5rem 1.2rem; border-radius:8px; text-decoration:none; color:var(--text); font-size:0.88rem; font-weight:500;">🇨🇦 Canada Wills</a>
-    <a href="/south-africa-legal-documents.html" style="background:var(--cream); border:1px solid var(--cream-dark); padding:0.5rem 1.2rem; border-radius:8px; text-decoration:none; color:var(--text); font-size:0.88rem; font-weight:500;">🇿🇦 South Africa Wills</a>
+    <a href="/uk-legal-wills.html" style="background:var(--cream); border:1px solid var(--cream-dark); padding:0.5rem 1.2rem; border-radius:8px; text-decoration:none; color:var(--text); font-size:0.88rem; font-weight:500;">🇬🇧 UK Wills</a>
     <a href="/expat-legal-will.html" style="background:var(--cream); border:1px solid var(--cream-dark); padding:0.5rem 1.2rem; border-radius:8px; text-decoration:none; color:var(--text); font-size:0.88rem; font-weight:500;">🌍 Expat Wills</a>
   </div>
 </div>
 
 <footer>
   <p>© 2026 Law-Trust.com — Independent Legal Document Comparison Site</p>
-  <p style="margin-top:0.5rem;"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/us-legal-wills.html">US Wills</a> · <a href="/canada-legal-documents.html">Canada Wills</a> · <a href="/lead-form.html">Get Help</a></p>
+  <p style="margin-top:0.5rem;"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/expat-legal-will.html">Expat Wills</a> · <a href="/lead-form.html">Get Help</a></p>
   <p style="margin-top:0.75rem; font-size:0.75rem;">Affiliate disclosure: Law-Trust.com earns commissions from referrals. This does not affect our editorial independence.</p>
 </footer>
 
