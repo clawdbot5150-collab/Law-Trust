@@ -46,7 +46,7 @@ const BUNDLES = {
   }
 };
 
-// ─── Helper: call LegalWills API ──────────────────────────────────────────────
+// ─── Helper: call LegalWills API (key=value response) ────────────────────────
 async function wlApi(params) {
   try {
     const body = qs.stringify({
@@ -58,7 +58,10 @@ async function wlApi(params) {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       timeout: 15000
     });
-    return qs.parse(resp.data) || { ResultCode: resp.data };
+    // Most commands return URL-encoded key=value (e.g. ResultCode=OK)
+    // Parse that, falling back to treating the whole body as ResultCode
+    const parsed = qs.parse(resp.data);
+    return Object.keys(parsed).length > 0 ? parsed : { ResultCode: resp.data.trim() };
   } catch (err) {
     console.error('[WL API Error]', err.message);
     return { ResultCode: 'ERROR', error: err.message };
@@ -66,9 +69,28 @@ async function wlApi(params) {
 }
 
 // ─── Helper: encrypt a value via LegalWills encrypt command ──────────────────
+// The encrypt command returns a raw encrypted string (NOT key=value format).
+// Must use STR (not VALUE) as the parameter name per API docs.
 async function wlEncrypt(value) {
-  const result = await wlApi({ CMD: 'encrypt', VALUE: value });
-  return result.EncryptedValue || result.ResultCode || value;
+  try {
+    const body = qs.stringify({
+      CMD: 'encrypt',
+      AFFILIATE_ID,
+      AFFILIATE_SIGNATURE: AFFILIATE_SIG,
+      STR: value          // ← correct parameter name per API docs
+    });
+    const resp = await axios.post(WL_URL, body, {
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      timeout: 15000
+    });
+    // Response is the raw encrypted string (not key=value)
+    const enc = resp.data?.trim();
+    if (!enc) throw new Error('Empty encrypt response');
+    return enc;
+  } catch (err) {
+    console.error('[WL Encrypt Error]', err.message);
+    throw err;
+  }
 }
 
 // ─── Helper: generate unique WL credentials ──────────────────────────────────
@@ -237,26 +259,32 @@ router.post('/launch', requireAuth, async (req, res) => {
   }
 
   try {
-    // Validate login first
+    // Step 1: Encrypt USERID + PASSWORD (5-min TTL, used for both validate + login)
+    // Per API docs: validate_login AND login both require encrypted credentials
+    const [encUserId, encPassword] = await Promise.all([
+      wlEncrypt(user.wl_userid),
+      wlEncrypt(user.wl_password)
+    ]);
+
+    // Step 2: Validate login using the encrypted credentials
+    // This catches errors before the user ever sees the iframe
     const validation = await wlApi({
       CMD: 'validate_login',
-      USERID: user.wl_userid,
-      PASSWORD: user.wl_password
+      USERID: encUserId,       // ← encrypted, per API docs
+      PASSWORD: encPassword,   // ← encrypted, per API docs
+      SERVICE_NAME: service_name.toLowerCase()
     });
 
     if (validation.ResultCode !== 'OK' && validation.ResultCode !== 'MEM_EXPIRED') {
+      console.warn('[WL validate_login]', user.wl_userid, '->', validation.ResultCode);
       return res.status(400).json({
         error: 'Account validation failed',
         code: validation.ResultCode
       });
     }
 
-    // Encrypt credentials (5-min TTL)
-    const [encUserId, encPassword] = await Promise.all([
-      wlEncrypt(user.wl_userid),
-      wlEncrypt(user.wl_password)
-    ]);
-
+    // Step 3: Return encrypted credentials to frontend for the POST login form
+    // The same encrypted values work for the login form (within the 5-min TTL)
     res.json({
       success: true,
       wl_url: WL_URL,
@@ -266,6 +294,7 @@ router.post('/launch', requireAuth, async (req, res) => {
       service_name: service_name.toLowerCase()
     });
   } catch (err) {
+    console.error('[WL Launch Error]', err.message);
     res.status(500).json({ error: err.message });
   }
 });
