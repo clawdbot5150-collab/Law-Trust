@@ -190,6 +190,42 @@ async function launch() {
   }
 }
 
+// ─── Logout from LegalWills iframe before leaving ────────────────────────────
+// Per API docs: logout must be sent to the SAME iframe as login
+function wlLogout() {
+  const affiliateId = document.getElementById('form-affiliate-id').value;
+  if (!affiliateId) return; // never logged in, nothing to do
+
+  // Build a logout form targeting the same iframe
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = document.getElementById('login-form').action;
+  form.target = 'legalwills_iframe';
+  form.style.display = 'none';
+
+  [['CMD','logout'], ['AFFILIATE_ID', affiliateId]].forEach(([name, value]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = name;
+    input.value = value;
+    form.appendChild(input);
+  });
+
+  document.body.appendChild(form);
+  form.submit();
+  document.body.removeChild(form);
+}
+
+// Fire WL logout when user navigates away
+window.addEventListener('beforeunload', wlLogout);
+
+// Also logout when clicking "← My Documents" link
+document.querySelector('a.btn-back').addEventListener('click', function(e) {
+  e.preventDefault();
+  wlLogout();
+  setTimeout(() => { window.location.href = '/estate-planning/dashboard.html'; }, 300);
+});
+
 function unlockDocument() {
   const params = new URLSearchParams(window.location.search);
   const service = params.get('service');
