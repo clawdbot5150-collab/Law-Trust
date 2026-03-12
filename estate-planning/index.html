@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Online Estate Planning — Wills, POA & More | Law-Trust.com</title>
+  <meta name="description" content="Create your legal will, power of attorney, or living will online. Lawyer-approved documents for the US, UK, Canada & South Africa. Start free, pay only when ready.">
+  <link rel="canonical" href="https://law-trust.com/estate-planning/">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K90ZD6K7CH"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K90ZD6K7CH');</script>
+  <style>
+    :root { --navy:#0a1628; --gold:#c9a84c; --gold-light:#e8d5a3; --white:#fff; --cream:#faf9f6; --cream-dark:#ede9e0; --text:#1a1a2e; --text-light:#6b7280; --green:#16a34a; --red:#dc2626; }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);}
+    nav{background:var(--navy);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;}
+    .nav-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem;font-weight:700;text-decoration:none;}
+    .nav-links a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:0.9rem;margin-left:1.5rem;}
+    .nav-links a:hover{color:var(--gold);}
+    .hero{background:linear-gradient(135deg,var(--navy) 0%,#1a2f4a 100%);padding:4rem 2rem 3rem;text-align:center;}
+    .hero h1{font-family:'Playfair Display',serif;color:#fff;font-size:clamp(1.8rem,4vw,2.8rem);margin-bottom:1rem;line-height:1.2;}
+    .hero h1 span{color:var(--gold);}
+    .hero p{color:rgba(255,255,255,0.8);font-size:1.1rem;max-width:580px;margin:0 auto 2rem;line-height:1.7;}
+    .hero-badges{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;}
+    .badge{background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);color:var(--gold-light);padding:.35rem .9rem;border-radius:20px;font-size:.8rem;font-weight:600;}
+    .main{max-width:1000px;margin:0 auto;padding:3rem 2rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
+    @media(max-width:720px){.main{grid-template-columns:1fr;gap:2rem;}}
+    .features h2{font-family:'Playfair Display',serif;font-size:1.6rem;margin-bottom:1.5rem;}
+    .feature{display:flex;gap:.75rem;margin-bottom:1.25rem;align-items:flex-start;}
+    .feature .icon{font-size:1.3rem;flex-shrink:0;margin-top:.1rem;}
+    .feature h3{font-size:.92rem;font-weight:600;margin-bottom:.25rem;}
+    .feature p{font-size:.82rem;color:var(--text-light);line-height:1.5;}
+    .services-preview{background:var(--white);border:1.5px solid var(--cream-dark);border-radius:12px;padding:1.25rem;margin-top:2rem;}
+    .services-preview h3{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:1rem;color:var(--navy);}
+    .svc-row{display:flex;justify-content:space-between;align-items:center;padding:.6rem 0;border-bottom:1px solid var(--cream-dark);}
+    .svc-row:last-child{border-bottom:none;}
+    .svc-name{font-size:.85rem;font-weight:500;}
+    .svc-price{font-size:.85rem;color:var(--green);font-weight:700;}
+    /* Auth card */
+    .auth-card{background:var(--white);border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.1);padding:2rem;}
+    .auth-tabs{display:flex;border-bottom:2px solid var(--cream-dark);margin-bottom:1.5rem;}
+    .auth-tab{flex:1;padding:.75rem;text-align:center;cursor:pointer;font-weight:600;font-size:.9rem;color:var(--text-light);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all .2s;}
+    .auth-tab.active{color:var(--navy);border-bottom-color:var(--gold);}
+    .form-group{margin-bottom:1rem;}
+    .form-group label{display:block;font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.35rem;}
+    .form-group input,.form-group select{width:100%;padding:.7rem .9rem;border:1.5px solid var(--cream-dark);border-radius:8px;font-size:.9rem;font-family:inherit;background:#fff;transition:border .2s;}
+    .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--gold);}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
+    .btn-primary{width:100%;background:var(--gold);color:var(--navy);border:none;padding:.85rem;border-radius:8px;font-weight:700;font-size:.95rem;cursor:pointer;transition:opacity .2s;font-family:inherit;}
+    .btn-primary:hover{opacity:.9;}
+    .btn-primary:disabled{opacity:.6;cursor:not-allowed;}
+    .error-msg{background:#fef2f2;border:1px solid #fecaca;border-radius:8px;padding:.75rem;font-size:.82rem;color:var(--red);margin-bottom:1rem;display:none;}
+    .success-msg{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:.75rem;font-size:.82rem;color:var(--green);margin-bottom:1rem;display:none;}
+    .auth-switch{text-align:center;font-size:.82rem;color:var(--text-light);margin-top:1rem;}
+    .auth-switch a{color:var(--navy);font-weight:600;cursor:pointer;text-decoration:none;}
+    .disclaimer{font-size:.75rem;color:var(--text-light);text-align:center;margin-top:.75rem;line-height:1.5;}
+    footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:2rem;text-align:center;font-size:.82rem;}
+    footer a{color:var(--gold);text-decoration:none;}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">⚖️ Law-Trust.com</a>
+  <div class="nav-links">
+    <a href="/#compare">Compare Tools</a>
+    <a href="/blog/">Blog</a>
+    <a href="/estate-planning/dashboard.html" id="nav-dashboard" style="display:none;">My Documents</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Create Your Legal Documents<br><span>Online in Minutes</span></h1>
+  <p>Lawyer-approved wills, power of attorney, and living wills for the US, UK, Canada & South Africa. Start free — pay only when you're ready to download.</p>
+  <div class="hero-badges">
+    <span class="badge">✓ Lawyer-Approved</span>
+    <span class="badge">✓ Try Before You Buy</span>
+    <span class="badge">✓ Free Lifetime Updates</span>
+    <span class="badge">✓ 100% Secure</span>
+  </div>
+</section>
+
+<div class="main">
+  <!-- Left: Features + pricing preview -->
+  <div class="features">
+    <h2>Everything You Need to Protect Your Family</h2>
+    <div class="feature">
+      <div class="icon">📜</div>
+      <div><h3>Last Will & Testament</h3><p>Distribute your assets exactly as you wish. Name guardians for your children. Appoint an executor you trust.</p></div>
+    </div>
+    <div class="feature">
+      <div class="icon">✋</div>
+      <div><h3>Power of Attorney</h3><p>Appoint someone to manage your finances and legal decisions if you become incapacitated.</p></div>
+    </div>
+    <div class="feature">
+      <div class="icon">🏥</div>
+      <div><h3>Living Will / Healthcare Directive</h3><p>Give your family and doctors clear guidance on your medical treatment wishes.</p></div>
+    </div>
+    <div class="feature">
+      <div class="icon">🌍</div>
+      <div><h3>Expatriate Wills</h3><p>Living abroad? Protect assets across multiple jurisdictions with an expat will.</p></div>
+    </div>
+    <div class="feature">
+      <div class="icon">🗄️</div>
+      <div><h3>Life Locker & Funeral Wishes</h3><p>Store critical information for your executor and document your final wishes.</p></div>
+    </div>
+
+    <div class="services-preview">
+      <h3>Simple, Transparent Pricing</h3>
+      <div class="svc-row"><span class="svc-name">Last Will & Testament</span><span class="svc-price">$49</span></div>
+      <div class="svc-row"><span class="svc-name">Power of Attorney</span><span class="svc-price">$39</span></div>
+      <div class="svc-row"><span class="svc-name">Living Will / Healthcare Directive</span><span class="svc-price">$29</span></div>
+      <div class="svc-row"><span class="svc-name">Expat Will (any jurisdiction)</span><span class="svc-price">$59</span></div>
+      <div class="svc-row"><span class="svc-name" style="font-weight:700;">Estate Package (Will + POA + Living Will)</span><span class="svc-price" style="font-size:1rem;">$89</span></div>
+    </div>
+  </div>
+
+  <!-- Right: Auth card -->
+  <div>
+    <div class="auth-card">
+      <div class="auth-tabs">
+        <div class="auth-tab active" onclick="showTab('register')">Create Account</div>
+        <div class="auth-tab" onclick="showTab('login')">Sign In</div>
+      </div>
+
+      <div id="error-msg" class="error-msg"></div>
+      <div id="success-msg" class="success-msg"></div>
+
+      <!-- REGISTER FORM -->
+      <form id="register-form" onsubmit="handleRegister(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name *</label>
+            <input type="text" name="first_name" required placeholder="Jane">
+          </div>
+          <div class="form-group">
+            <label>Last Name *</label>
+            <input type="text" name="last_name" required placeholder="Doe">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address *</label>
+          <input type="email" name="email" required placeholder="jane@example.com">
+        </div>
+        <div class="form-group">
+          <label>Password *</label>
+          <input type="password" name="password" required placeholder="At least 8 characters" minlength="8">
+        </div>
+        <div class="form-group">
+          <label>Country *</label>
+          <select name="country" required>
+            <option value="">Select your country...</option>
+            <option value="United States">🇺🇸 United States</option>
+            <option value="Canada">🇨🇦 Canada</option>
+            <option value="United Kingdom - England">🇬🇧 United Kingdom (England)</option>
+            <option value="United Kingdom - Wales">🏴󠁧󠁢󠁷󠁬󠁳󠁿 United Kingdom (Wales)</option>
+            <option value="South Africa">🇿🇦 South Africa</option>
+          </select>
+        </div>
+        <div class="form-row" id="stateprov-row" style="display:none;">
+          <div class="form-group">
+            <label>State / Province</label>
+            <input type="text" name="stateprov" placeholder="e.g. California">
+          </div>
+          <div class="form-group">
+            <label>City</label>
+            <input type="text" name="city" placeholder="e.g. Los Angeles">
+          </div>
+        </div>
+        <button type="submit" class="btn-primary" id="register-btn">Create My Account →</button>
+        <p class="disclaimer">By creating an account you agree to our <a href="/terms.html" style="color:var(--navy);">Terms of Use</a>. Your documents are stored securely and never shared.</p>
+        <p class="auth-switch">Already have an account? <a onclick="showTab('login')">Sign in →</a></p>
+      </form>
+
+      <!-- LOGIN FORM -->
+      <form id="login-form" style="display:none;" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" required placeholder="jane@example.com">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" name="password" required placeholder="Your password">
+        </div>
+        <button type="submit" class="btn-primary" id="login-btn">Sign In →</button>
+        <p class="auth-switch">Don't have an account? <a onclick="showTab('register')">Create one free →</a></p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Law-Trust.com — Independent Legal Document Service</p>
+  <p style="margin-top:.5rem;"><a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="/#compare">Compare</a></p>
+  <p style="margin-top:.75rem;font-size:.75rem;">Legal documents are lawyer-reviewed. Law-Trust.com is not a law firm. For complex estate planning, consult a licensed attorney.</p>
+</footer>
+
+<script>
+const API = '/api/wl';
+
+function showTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach((t,i) => t.classList.toggle('active', (tab==='register'&&i===0)||(tab==='login'&&i===1)));
+  document.getElementById('register-form').style.display = tab==='register' ? '' : 'none';
+  document.getElementById('login-form').style.display = tab==='login' ? '' : 'none';
+  clearMessages();
+}
+
+function showError(msg) {
+  const el = document.getElementById('error-msg');
+  el.textContent = msg; el.style.display = 'block';
+  document.getElementById('success-msg').style.display = 'none';
+}
+function clearMessages() {
+  document.getElementById('error-msg').style.display = 'none';
+  document.getElementById('success-msg').style.display = 'none';
+}
+
+// Show state/province field when US/Canada selected
+document.querySelector('select[name=country]').addEventListener('change', function() {
+  const showState = ['United States','Canada','South Africa'].includes(this.value);
+  document.getElementById('stateprov-row').style.display = showState ? 'grid' : 'none';
+});
+
+async function handleRegister(e) {
+  e.preventDefault();
+  clearMessages();
+  const btn = document.getElementById('register-btn');
+  btn.disabled = true; btn.textContent = 'Creating account...';
+
+  const data = Object.fromEntries(new FormData(e.target));
+  try {
+    const resp = await fetch(API + '/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await resp.json();
+    if (!resp.ok) throw new Error(json.error || 'Registration failed');
+    localStorage.setItem('lt_session', json.session_token);
+    localStorage.setItem('lt_user', JSON.stringify(json.user));
+    window.location.href = '/estate-planning/dashboard.html';
+  } catch(err) {
+    showError(err.message);
+    btn.disabled = false; btn.textContent = 'Create My Account →';
+  }
+}
+
+async function handleLogin(e) {
+  e.preventDefault();
+  clearMessages();
+  const btn = document.getElementById('login-btn');
+  btn.disabled = true; btn.textContent = 'Signing in...';
+
+  const data = Object.fromEntries(new FormData(e.target));
+  try {
+    const resp = await fetch(API + '/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await resp.json();
+    if (!resp.ok) throw new Error(json.error || 'Login failed');
+    localStorage.setItem('lt_session', json.session_token);
+    localStorage.setItem('lt_user', JSON.stringify(json.user));
+    window.location.href = '/estate-planning/dashboard.html';
+  } catch(err) {
+    showError(err.message);
+    btn.disabled = false; btn.textContent = 'Sign In →';
+  }
+}
+
+// If already logged in, redirect to dashboard
+const token = localStorage.getItem('lt_session');
+if (token) {
+  document.getElementById('nav-dashboard').style.display = 'inline';
+  // Verify session is still valid
+  fetch(API + '/me', { headers: { 'x-session-token': token } })
+    .then(r => { if (r.ok) window.location.href = '/estate-planning/dashboard.html'; })
+    .catch(() => {});
+}
+
+// Handle payment redirect from dashboard
+const params = new URLSearchParams(window.location.search);
+if (params.get('payment') === 'success') {
+  document.getElementById('success-msg').textContent = '✅ Payment confirmed! Your documents are now unlocked.';
+  document.getElementById('success-msg').style.display = 'block';
+}
+</script>
+</body>
+</html>
