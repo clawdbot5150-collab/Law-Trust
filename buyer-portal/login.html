@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K90ZD6K7CH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K90ZD6K7CH');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login — Lead Buyer Portal — Law-Trust.com</title>
+<style>
+  :root{--navy:#1a2744;--gold:#c9a84c;--gold-light:#e8c96a;--light:#f8f9fc;--border:#dde1ea;--muted:#666;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--light);min-height:100vh;display:flex;flex-direction:column;}
+  nav{background:var(--navy);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;}
+  nav a.brand{color:var(--gold);text-decoration:none;font-size:20px;font-weight:700;}
+  nav a{color:rgba(255,255,255,0.7);font-size:14px;text-decoration:none;}
+  nav a:hover{color:var(--gold);}
+  main{flex:1;display:flex;align-items:center;justify-content:center;padding:40px 20px;}
+  .login-card{background:white;border-radius:14px;box-shadow:0 8px 32px rgba(26,39,68,0.1);padding:40px 36px;width:100%;max-width:420px;}
+  .login-card .logo{text-align:center;margin-bottom:28px;}
+  .login-card .logo span{font-size:40px;}
+  .login-card h2{font-size:24px;font-weight:800;color:var(--navy);text-align:center;margin-bottom:6px;}
+  .login-card p{text-align:center;color:var(--muted);font-size:14px;margin-bottom:28px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-weight:600;font-size:13px;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.3px;}
+  .field input{width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:8px;font-size:15px;transition:border-color 0.2s;font-family:inherit;}
+  .field input:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);}
+  .btn{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border:none;border-radius:8px;padding:14px;font-size:16px;font-weight:700;cursor:pointer;width:100%;transition:all 0.2s;margin-top:8px;}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(201,168,76,0.35);}
+  .btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+  .error-box{background:#fef2f2;border:1px solid #fca5a5;color:#b91c1c;padding:12px;border-radius:8px;font-size:14px;margin-bottom:16px;display:none;}
+  .links{text-align:center;margin-top:20px;font-size:14px;color:var(--muted);}
+  .links a{color:var(--gold);text-decoration:none;font-weight:600;}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/buyer-portal/" class="brand">⚖️ Buyer Portal</a>
+  <a href="/buyer-portal/">← Back</a>
+</nav>
+<main>
+  <div class="login-card">
+    <div class="logo"><span>⚖️</span></div>
+    <h2>Welcome Back</h2>
+    <p>Log in to your lead buyer dashboard</p>
+    <div id="errBox" class="error-box"></div>
+    <form onsubmit="doLogin(event)">
+      <div class="field"><label>Email</label><input type="email" id="lEmail" required placeholder="jane@lawfirm.com"></div>
+      <div class="field"><label>Password</label><input type="password" id="lPassword" required placeholder="Your password"></div>
+      <button type="submit" class="btn" id="loginBtn">Log In →</button>
+    </form>
+    <div class="links">
+      Don't have an account? <a href="/buyer-portal/register.html">Register here →</a>
+    </div>
+  </div>
+</main>
+<script>
+async function doLogin(e) {
+  e.preventDefault();
+  const btn = document.getElementById('loginBtn');
+  const err = document.getElementById('errBox');
+  err.style.display = 'none';
+  btn.disabled = true; btn.textContent = 'Logging in…';
+  try {
+    const res = await fetch('/api/buyers/login', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email: document.getElementById('lEmail').value, password: document.getElementById('lPassword').value })
+    });
+    const data = await res.json();
+    if (data.success && data.token) {
+      localStorage.setItem('buyerToken', data.token);
+      localStorage.setItem('buyerName', data.name || '');
+      window.location.href = '/buyer-portal/dashboard.html';
+    } else {
+      err.textContent = data.error || 'Login failed. Check your credentials.';
+      err.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Log In →';
+    }
+  } catch(e) {
+    err.textContent = 'Connection error. Try again.';
+    err.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Log In →';
+  }
+}
+</script>
+</body>
+</html>

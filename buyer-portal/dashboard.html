@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K90ZD6K7CH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K90ZD6K7CH');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard — Lead Buyer Portal — Law-Trust.com</title>
+<style>
+  :root{--navy:#1a2744;--gold:#c9a84c;--gold-light:#e8c96a;--light:#f8f9fc;--border:#dde1ea;--muted:#666;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--light);color:#333;}
+  nav{background:var(--navy);padding:14px 24px;display:flex;justify-content:space-between;align-items:center;}
+  nav .brand{color:var(--gold);font-size:18px;font-weight:700;text-decoration:none;}
+  nav .nav-right{display:flex;align-items:center;gap:16px;}
+  nav .user-name{color:rgba(255,255,255,0.8);font-size:14px;}
+  nav .btn-logout{background:transparent;border:1px solid rgba(255,255,255,0.3);color:white;padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;transition:all 0.2s;}
+  nav .btn-logout:hover{background:rgba(255,255,255,0.1);}
+  .page-header{background:var(--navy);padding:28px 24px;color:white;}
+  .page-header h1{font-size:24px;font-weight:800;color:var(--gold);}
+  .page-header p{opacity:0.7;font-size:14px;margin-top:4px;}
+  .container{max-width:1000px;margin:0 auto;padding:28px 20px;}
+  
+  .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px;}
+  .stat-card{background:white;border-radius:10px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.06);border-left:4px solid var(--gold);}
+  .stat-card .val{font-size:28px;font-weight:800;color:var(--navy);}
+  .stat-card .lbl{font-size:13px;color:var(--muted);margin-top:4px;}
+  
+  .card{background:white;border-radius:10px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,0.06);margin-bottom:20px;}
+  .card-title{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;}
+  
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{background:var(--light);text-align:left;padding:10px 12px;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);font-weight:600;border-bottom:2px solid var(--border);}
+  td{padding:10px 12px;border-bottom:1px solid var(--border);}
+  tr:last-child td{border-bottom:none;}
+  tr:hover td{background:#fafafa;}
+  
+  .badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;}
+  .badge-hot{background:#fef2f2;color:#dc2626;}
+  .badge-warm{background:#fffbeb;color:#d97706;}
+  .badge-cool{background:#eff6ff;color:#2563eb;}
+  .badge-cold{background:#f9fafb;color:#6b7280;}
+  .badge-sold{background:#f0fdf4;color:#16a34a;}
+  .badge-new{background:#eff6ff;color:#2563eb;}
+  
+  .btn{padding:10px 18px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;border:none;transition:all 0.2s;}
+  .btn-gold{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);}
+  .btn-gold:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(201,168,76,0.3);}
+  .btn-outline{background:transparent;border:2px solid var(--border);color:var(--muted);}
+  .btn-outline:hover{border-color:var(--navy);color:var(--navy);}
+  
+  .prefs-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+  .pref-item label{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.4px;color:var(--muted);margin-bottom:6px;display:block;}
+  .pref-item select,.pref-item input{width:100%;padding:9px 12px;border:2px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;}
+  .pref-item select:focus,.pref-item input:focus{outline:none;border-color:var(--gold);}
+  .checkbox-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .chip{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border:2px solid var(--border);border-radius:20px;font-size:13px;cursor:pointer;transition:all 0.2s;}
+  .chip input{position:absolute;opacity:0;}
+  .chip:hover{border-color:var(--gold-light);}
+  .chip.checked{border-color:var(--gold);background:#fffbf0;color:var(--navy);font-weight:600;}
+  
+  .balance-box{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding:16px;background:var(--light);border-radius:8px;}
+  .balance-amt{font-size:32px;font-weight:800;color:var(--navy);}
+  .balance-lbl{font-size:13px;color:var(--muted);}
+  
+  .loading{text-align:center;padding:40px;color:var(--muted);}
+  .auth-required{text-align:center;padding:60px 20px;}
+  .auth-required h2{color:var(--navy);margin-bottom:12px;}
+  .auth-required a{color:var(--gold);text-decoration:none;font-weight:600;}
+
+  @media(max-width:600px){.prefs-grid{grid-template-columns:1fr;}.stats-grid{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/buyer-portal/" class="brand">⚖️ Buyer Portal</a>
+  <div class="nav-right">
+    <span class="user-name" id="navName">Loading…</span>
+    <button class="btn-logout" onclick="logout()">Log Out</button>
+  </div>
+</nav>
+
+<div id="authRequired" class="auth-required" style="display:none;">
+  <h2>⚠️ Please log in</h2>
+  <p>You need to be logged in to view your dashboard.</p>
+  <p style="margin-top:16px;"><a href="/buyer-portal/login.html">Log in here →</a></p>
+</div>
+
+<div id="dashContent" style="display:none;">
+  <div class="page-header">
+    <h1>Your Lead Buyer Dashboard</h1>
+    <p id="welcomeMsg">Welcome back!</p>
+  </div>
+
+  <div class="container">
+    <!-- Stats Row -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="val" id="statBalance">$0</div>
+        <div class="lbl">Account Balance</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="statLeadsMonth">0</div>
+        <div class="lbl">Leads This Month</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="statLeadsTotal">0</div>
+        <div class="lbl">Total Leads Received</div>
+      </div>
+      <div class="stat-card">
+        <div class="val" id="statTier">—</div>
+        <div class="lbl">Current Tier</div>
+      </div>
+    </div>
+
+    <!-- Balance & Top-up -->
+    <div class="card">
+      <div class="card-title">💰 Account Balance</div>
+      <div class="balance-box">
+        <div>
+          <div class="balance-amt" id="balanceAmt">$0.00</div>
+          <div class="balance-lbl">Available balance for lead purchases</div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <select id="topupAmt" style="padding:10px 14px;border:2px solid var(--border);border-radius:8px;font-size:14px;font-family:inherit;">
+            <option value="200">Add $200</option>
+            <option value="500">Add $500</option>
+            <option value="1000">Add $1,000</option>
+            <option value="2500">Add $2,500</option>
+          </select>
+          <button class="btn btn-gold" onclick="requestTopup()">Request Top-Up →</button>
+        </div>
+      </div>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px;">💡 Top-ups are processed manually. You'll receive an invoice within 1 business hour.</p>
+    </div>
+
+    <!-- Recent Leads -->
+    <div class="card">
+      <div class="card-title">
+        🔥 Recent Leads
+        <button class="btn btn-outline" style="font-size:12px;padding:6px 12px;" onclick="loadLeads()">Refresh</button>
+      </div>
+      <div id="leadsTable">
+        <div class="loading">Loading your leads…</div>
+      </div>
+    </div>
+
+    <!-- Preferences -->
+    <div class="card">
+      <div class="card-title">⚙️ Lead Preferences</div>
+      <div id="prefsForm">
+        <div class="prefs-grid">
+          <div class="pref-item">
+            <label>Price Per Lead</label>
+            <select id="prefPrice">
+              <option value="40">$40 / lead (Basic)</option>
+              <option value="80" selected>$80 / lead (Standard)</option>
+              <option value="120">$120 / lead (Premium)</option>
+            </select>
+          </div>
+          <div class="pref-item">
+            <label>Max Leads Per Month</label>
+            <select id="prefMax">
+              <option value="5">5 leads</option>
+              <option value="10" selected>10 leads</option>
+              <option value="20">20 leads</option>
+              <option value="50">50 leads</option>
+            </select>
+          </div>
+        </div>
+        <div class="pref-item" style="margin-top:16px;">
+          <label>Document Types</label>
+          <div class="checkbox-row" id="prefDocTypes">
+            <label class="chip"><input type="checkbox" value="Last Will"> 📜 Last Will</label>
+            <label class="chip"><input type="checkbox" value="Living Trust"> 🏛️ Living Trust</label>
+            <label class="chip"><input type="checkbox" value="Power of Attorney"> ✍️ POA</label>
+            <label class="chip"><input type="checkbox" value="Healthcare Directive"> 🏥 Healthcare</label>
+            <label class="chip"><input type="checkbox" value="LLC Formation"> 🏢 LLC</label>
+          </div>
+        </div>
+        <div class="pref-item" style="margin-top:16px;">
+          <label>Countries</label>
+          <div class="checkbox-row" id="prefCountries">
+            <label class="chip"><input type="checkbox" value="US"> 🇺🇸 US</label>
+            <label class="chip"><input type="checkbox" value="UK"> 🇬🇧 UK</label>
+            <label class="chip"><input type="checkbox" value="Canada"> 🇨🇦 Canada</label>
+            <label class="chip"><input type="checkbox" value="Australia"> 🇦🇺 Australia</label>
+          </div>
+        </div>
+        <button class="btn btn-gold" style="margin-top:20px;" onclick="savePrefs()">Save Preferences</button>
+        <span id="prefsSaved" style="display:none;color:green;font-size:13px;margin-left:12px;">✅ Saved!</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const token = localStorage.getItem('buyerToken');
+const name = localStorage.getItem('buyerName');
+let dashData = null;
+
+if (!token) {
+  document.getElementById('authRequired').style.display = 'block';
+} else {
+  document.getElementById('dashContent').style.display = 'block';
+  document.getElementById('navName').textContent = name || 'Buyer';
+  loadDashboard();
+}
+
+// Chip toggle
+document.querySelectorAll('.chip input').forEach(inp => {
+  inp.closest('.chip').addEventListener('click', () => {
+    setTimeout(() => inp.closest('.chip').classList.toggle('checked', inp.checked), 10);
+  });
+});
+
+async function loadDashboard() {
+  try {
+    const res = await fetch('/api/buyers/dashboard', { headers: { 'Authorization': `Bearer ${token}` } });
+    if (res.status === 401) { logout(); return; }
+    const data = await res.json();
+    dashData = data;
+    
+    document.getElementById('navName').textContent = data.buyer?.name || name || 'Buyer';
+    document.getElementById('welcomeMsg').textContent = `Welcome back, ${data.buyer?.name || 'there'}! 👋`;
+    document.getElementById('statBalance').textContent = `$${(data.buyer?.balance || 0).toFixed(2)}`;
+    document.getElementById('balanceAmt').textContent = `$${(data.buyer?.balance || 0).toFixed(2)}`;
+    document.getElementById('statLeadsMonth').textContent = data.leadsThisMonth || 0;
+    document.getElementById('statLeadsTotal').textContent = (data.recentLeads || []).length;
+    
+    // Tier from preferences
+    const prefs = data.buyer?.preferences || {};
+    const price = prefs.pricePerLead || 80;
+    document.getElementById('statTier').textContent = price >= 120 ? '🔥 Premium' : price >= 80 ? '⭐ Standard' : '💛 Basic';
+    
+    // Populate preferences
+    if (prefs.pricePerLead) document.getElementById('prefPrice').value = prefs.pricePerLead;
+    if (prefs.maxPerMonth) document.getElementById('prefMax').value = prefs.maxPerMonth;
+    if (prefs.docTypes) {
+      document.querySelectorAll('#prefDocTypes .chip input').forEach(inp => {
+        if (prefs.docTypes.includes(inp.value)) { inp.checked = true; inp.closest('.chip').classList.add('checked'); }
+      });
+    }
+    if (prefs.countries) {
+      document.querySelectorAll('#prefCountries .chip input').forEach(inp => {
+        if (prefs.countries.includes(inp.value)) { inp.checked = true; inp.closest('.chip').classList.add('checked'); }
+      });
+    }
+    
+    renderLeadsTable(data.recentLeads || []);
+  } catch(e) {
+    console.error(e);
+  }
+}
+
+async function loadLeads() {
+  try {
+    const res = await fetch('/api/buyers/leads', { headers: { 'Authorization': `Bearer ${token}` } });
+    const data = await res.json();
+    renderLeadsTable(data.leads || []);
+  } catch(e) {}
+}
+
+function renderLeadsTable(leads) {
+  const el = document.getElementById('leadsTable');
+  if (!leads.length) {
+    el.innerHTML = '<p style="text-align:center;padding:32px;color:var(--muted);">No leads yet. They\'ll appear here as soon as they\'re delivered.</p>';
+    return;
+  }
+  el.innerHTML = `<div style="overflow-x:auto;"><table>
+    <thead><tr>
+      <th>Date</th><th>Document</th><th>Location</th><th>Score</th><th>Status</th><th>Price</th>
+    </tr></thead>
+    <tbody>${leads.map(l => {
+      const score = l.score || 0;
+      const cls = score >= 80 ? 'hot' : score >= 60 ? 'warm' : score >= 40 ? 'cool' : 'cold';
+      const date = new Date(l.sold_at || l.created_at).toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'});
+      return `<tr>
+        <td>${date}</td>
+        <td>${l.doc_type || '—'}</td>
+        <td>${[l.state, l.country].filter(Boolean).join(', ') || '—'}</td>
+        <td><span class="badge badge-${cls}">${score}/100 ${cls.toUpperCase()}</span></td>
+        <td><span class="badge badge-${l.status || 'new'}">${(l.status || 'new').toUpperCase()}</span></td>
+        <td>${l.sold_price ? '$'+l.sold_price : '—'}</td>
+      </tr>`;
+    }).join('')}</tbody></table></div>`;
+}
+
+async function savePrefs() {
+  const pricePerLead = parseInt(document.getElementById('prefPrice').value);
+  const maxPerMonth = parseInt(document.getElementById('prefMax').value);
+  const docTypes = [...document.querySelectorAll('#prefDocTypes .chip input:checked')].map(i => i.value);
+  const countries = [...document.querySelectorAll('#prefCountries .chip input:checked')].map(i => i.value);
+  
+  try {
+    const res = await fetch('/api/buyers/preferences', {
+      method: 'PUT',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ pricePerLead, maxPerMonth, docTypes, countries })
+    });
+    const data = await res.json();
+    if (data.success) {
+      const saved = document.getElementById('prefsSaved');
+      saved.style.display = 'inline'; setTimeout(() => saved.style.display = 'none', 3000);
+    }
+  } catch(e) {}
+}
+
+async function requestTopup() {
+  const amount = document.getElementById('topupAmt').value;
+  try {
+    const res = await fetch('/api/buyers/topup', {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ amount })
+    });
+    const data = await res.json();
+    if (data.success) alert('✅ Top-up request sent! We\'ll send you an invoice within 1 business hour.');
+  } catch(e) {}
+}
+
+function logout() {
+  localStorage.removeItem('buyerToken');
+  localStorage.removeItem('buyerName');
+  window.location.href = '/buyer-portal/login.html';
+}
+</script>
+</body>
+</html>

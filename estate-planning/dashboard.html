@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Estate Documents — Law-Trust.com</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K90ZD6K7CH"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-K90ZD6K7CH');</script>
+  <style>
+    :root{--navy:#0a1628;--gold:#c9a84c;--gold-light:#e8d5a3;--white:#fff;--cream:#faf9f6;--cream-dark:#ede9e0;--text:#1a1a2e;--text-light:#6b7280;--green:#16a34a;--red:#dc2626;}
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;}
+    nav{background:var(--navy);padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;}
+    .nav-logo{font-family:'Playfair Display',serif;color:var(--gold);font-size:1.3rem;font-weight:700;text-decoration:none;}
+    .nav-right{display:flex;align-items:center;gap:1.5rem;}
+    .nav-right a{color:rgba(255,255,255,0.8);text-decoration:none;font-size:.9rem;}
+    .nav-right span{color:var(--gold-light);font-size:.85rem;}
+    .btn-logout{background:transparent;border:1px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.7);padding:.35rem .9rem;border-radius:6px;cursor:pointer;font-size:.82rem;font-family:inherit;}
+    .btn-logout:hover{border-color:var(--gold);color:var(--gold);}
+    .page{max-width:1100px;margin:0 auto;padding:2.5rem 2rem;}
+    .page-header{margin-bottom:2rem;}
+    .page-header h1{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.25rem;}
+    .page-header p{color:var(--text-light);font-size:.9rem;}
+    /* Banners */
+    .banner{border-radius:12px;padding:1.25rem 1.5rem;margin-bottom:1.5rem;display:flex;gap:1rem;align-items:flex-start;}
+    .banner.success{background:#f0fdf4;border:1px solid #bbf7d0;}
+    .banner.warning{background:#fefce8;border:1px solid #fde68a;}
+    .banner.info{background:#eff6ff;border:1px solid #bfdbfe;}
+    /* Bundle promo */
+    .bundle-promo{background:linear-gradient(135deg,var(--navy),#1a3a5c);border-radius:16px;padding:2rem;margin-bottom:2rem;color:#fff;}
+    .bundle-promo h2{font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:.5rem;}
+    .bundle-promo p{color:rgba(255,255,255,0.75);font-size:.88rem;margin-bottom:1.25rem;}
+    .bundle-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;}
+    .bundle-card{background:rgba(255,255,255,0.08);border:1px solid rgba(201,168,76,0.4);border-radius:10px;padding:1.25rem;cursor:pointer;transition:background .2s;}
+    .bundle-card:hover,.bundle-card.selected{background:rgba(201,168,76,0.15);border-color:var(--gold);}
+    .bundle-card h3{font-size:.9rem;font-weight:700;margin-bottom:.4rem;color:var(--gold-light);}
+    .bundle-card .bundle-includes{font-size:.78rem;color:rgba(255,255,255,0.65);margin-bottom:.75rem;line-height:1.6;}
+    .bundle-price{display:flex;align-items:baseline;gap:.4rem;}
+    .bundle-price .price{font-size:1.4rem;font-weight:700;color:var(--gold);}
+    .bundle-price .save{font-size:.75rem;color:rgba(255,255,255,0.5);}
+    /* Service grid */
+    .section-title{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:1rem;}
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.25rem;margin-bottom:2.5rem;}
+    .service-card{background:var(--white);border:1.5px solid var(--cream-dark);border-radius:12px;padding:1.5rem;transition:all .2s;}
+    .service-card:hover{border-color:var(--gold);box-shadow:0 4px 16px rgba(0,0,0,0.06);}
+    .service-card.locked{opacity:.9;}
+    .svc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.75rem;}
+    .svc-icon{font-size:1.6rem;}
+    .svc-badge{padding:.25rem .7rem;border-radius:20px;font-size:.72rem;font-weight:700;}
+    .svc-badge.unlocked{background:#dcfce7;color:#166534;}
+    .svc-badge.locked{background:#f3f4f6;color:var(--text-light);}
+    .svc-badge.try-free{background:#dbeafe;color:#1e40af;}
+    .svc-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:.35rem;}
+    .svc-desc{font-size:.82rem;color:var(--text-light);line-height:1.5;margin-bottom:1rem;}
+    .svc-price{font-size:.85rem;color:var(--green);font-weight:700;margin-bottom:.75rem;}
+    .btn-open{width:100%;padding:.7rem;border-radius:8px;font-weight:600;font-size:.88rem;cursor:pointer;font-family:inherit;transition:all .2s;border:none;}
+    .btn-open.primary{background:var(--gold);color:var(--navy);}
+    .btn-open.primary:hover{opacity:.9;}
+    .btn-open.secondary{background:var(--cream);border:1.5px solid var(--cream-dark);color:var(--text);}
+    .btn-open.secondary:hover{border-color:var(--gold);}
+    .btn-open.buy{background:var(--navy);color:#fff;}
+    .btn-open.buy:hover{background:#1a2f4a;}
+    /* Cart sidebar concept */
+    .checkout-bar{position:fixed;bottom:0;left:0;right:0;background:var(--navy);color:#fff;padding:1rem 2rem;display:none;align-items:center;justify-content:space-between;z-index:100;flex-wrap:wrap;gap:1rem;}
+    .checkout-bar.visible{display:flex;}
+    .cart-info{font-size:.9rem;}
+    .cart-info strong{color:var(--gold);}
+    .cart-items{font-size:.78rem;color:rgba(255,255,255,0.6);}
+    .btn-checkout{background:var(--gold);color:var(--navy);border:none;padding:.7rem 2rem;border-radius:8px;font-weight:700;cursor:pointer;font-size:.9rem;font-family:inherit;}
+    .btn-checkout:hover{opacity:.9;}
+    .btn-clear{background:transparent;border:none;color:rgba(255,255,255,0.4);font-size:.8rem;cursor:pointer;font-family:inherit;}
+    footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:1.5rem 2rem;text-align:center;font-size:.8rem;margin-top:3rem;}
+    footer a{color:var(--gold);text-decoration:none;}
+    @media(max-width:600px){.page{padding:1.5rem 1rem;}.bundle-cards{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">⚖️ Law-Trust.com</a>
+  <div class="nav-right">
+    <span id="nav-name">Loading...</span>
+    <a href="/estate-planning/">Account</a>
+    <button class="btn-logout" onclick="logout()">Sign Out</button>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <h1>My Estate Documents</h1>
+    <p id="welcome-msg">Manage and create your legal documents below.</p>
+  </div>
+
+  <div id="payment-banner" class="banner success" style="display:none;">
+    ✅ <strong>Payment confirmed!</strong> Your documents have been unlocked. Click "Open Document" to begin.
+  </div>
+
+  <!-- Bundle Promo -->
+  <div class="bundle-promo">
+    <h2>Save with a Bundle</h2>
+    <p>Protect your whole estate for less — add a bundle to your cart below.</p>
+    <div class="bundle-cards">
+      <div class="bundle-card" onclick="toggleBundle('bundle_estate', this)">
+        <h3>🏠 Estate Package</h3>
+        <div class="bundle-includes">Will + Power of Attorney + Living Will<br>Everything most families need</div>
+        <div class="bundle-price"><span class="price">$89</span><span class="save">Save $28 vs. individual</span></div>
+      </div>
+      <div class="bundle-card" onclick="toggleBundle('bundle_full', this)">
+        <h3>⭐ Full Estate Package</h3>
+        <div class="bundle-includes">Will + POA + Living Will + Life Locker + Funeral Wishes<br>Complete peace of mind</div>
+        <div class="bundle-price"><span class="price">$119</span><span class="save">Save $56 vs. individual</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Individual Services -->
+  <h2 class="section-title">Your Documents</h2>
+  <div class="services-grid" id="services-grid">
+    <!-- Populated by JS -->
+  </div>
+</div>
+
+<!-- Checkout bar -->
+<div class="checkout-bar" id="checkout-bar">
+  <div>
+    <div class="cart-info">Cart: <strong id="cart-total">$0</strong></div>
+    <div class="cart-items" id="cart-items-list"></div>
+  </div>
+  <div style="display:flex;gap:1rem;align-items:center;">
+    <button class="btn-clear" onclick="clearCart()">Clear cart</button>
+    <button class="btn-checkout" onclick="checkout()">Secure Checkout →</button>
+  </div>
+</div>
+
+<footer>
+  <p>© 2026 Law-Trust.com · <a href="/">Home</a> · <a href="/blog/">Blog</a> · <a href="mailto:support@law-trust.com">Support</a></p>
+  <p style="margin-top:.5rem;font-size:.72rem;">Documents are lawyer-reviewed. Law-Trust.com is not a law firm.</p>
+</footer>
+
+<script>
+const API = '/api/wl';
+const token = localStorage.getItem('lt_session');
+if (!token) window.location.href = '/estate-planning/';
+
+let user = null;
+let cart = [];
+
+const SERVICES = {
+  mywill:             { label:'Last Will & Testament',         icon:'📜', desc:'Distribute your assets, name guardians, appoint an executor.', price:49, priceStr:'$49' },
+  mypowerofattorney:  { label:'Power of Attorney',             icon:'✋', desc:'Appoint someone to manage your affairs if incapacitated.', price:39, priceStr:'$39' },
+  mylivingwill:       { label:'Living Will / Healthcare Dir.', icon:'🏥', desc:'Give your family and doctors clear guidance on your medical wishes.', price:29, priceStr:'$29' },
+  mylifelocker:       { label:'Life Locker',                   icon:'🗄️', desc:'Store critical account details and instructions for your executor.', price:19, priceStr:'$19' },
+  myfuneral:          { label:'Funeral & Organ Wishes',        icon:'🕊️', desc:'Document your funeral preferences and organ donation wishes.', price:19, priceStr:'$19' },
+};
+
+const EXPAT_SERVICES = {
+  myexpatwill_us:     { label:'Expat Will (US Assets)',        icon:'🇺🇸', desc:'For expats with assets held in the United States.', price:59, priceStr:'$59' },
+  myexpatwill_canada: { label:'Expat Will (Canada Assets)',    icon:'🇨🇦', desc:'For expats with assets held in Canada (outside Québec).', price:59, priceStr:'$59' },
+  myexpatwill_quebec: { label:'Expat Will (Québec Assets)',    icon:'🍁', desc:'For expats with assets held in Québec.', price:59, priceStr:'$59' },
+  myexpatwill_uk:     { label:'Expat Will (UK Assets)',        icon:'🇬🇧', desc:'For expats with assets held in England or Wales.', price:59, priceStr:'$59' },
+};
+
+const BUNDLES = {
+  bundle_estate: { label:'Estate Package', price:89, services:['mywill','mypowerofattorney','mylivingwill'] },
+  bundle_full:   { label:'Full Estate Package', price:119, services:['mywill','mypowerofattorney','mylivingwill','mylifelocker','myfuneral'] },
+};
+
+async function init() {
+  // Check payment success
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('payment') === 'success') {
+    document.getElementById('payment-banner').style.display = 'flex';
+    window.history.replaceState({}, '', '/estate-planning/dashboard.html');
+  }
+
+  // Load user
+  try {
+    const resp = await fetch(API + '/me', { headers: { 'x-session-token': token } });
+    if (!resp.ok) { logout(); return; }
+    const data = await resp.json();
+    user = data.user;
+    document.getElementById('nav-name').textContent = user.first_name + ' ' + user.last_name;
+    document.getElementById('welcome-msg').textContent =
+      `Welcome back, ${user.first_name}. Your account covers ${user.country}.`;
+    renderServices();
+  } catch(e) { logout(); }
+}
+
+function renderServices() {
+  const grid = document.getElementById('services-grid');
+  const allSvcs = { ...SERVICES };
+
+  // Add relevant expat services based on country
+  if (user.country === 'United States' || !user.country) allSvcs.myexpatwill_us = EXPAT_SERVICES.myexpatwill_us;
+  if (user.country === 'Canada') { allSvcs.myexpatwill_canada = EXPAT_SERVICES.myexpatwill_canada; allSvcs.myexpatwill_quebec = EXPAT_SERVICES.myexpatwill_quebec; }
+  if (user.country === 'United Kingdom - England' || user.country === 'United Kingdom - Wales') allSvcs.myexpatwill_uk = EXPAT_SERVICES.myexpatwill_uk;
+
+  grid.innerHTML = Object.entries(allSvcs).map(([key, svc]) => {
+    const paid = !!user[key];
+    return `
+    <div class="service-card ${paid ? '' : 'locked'}">
+      <div class="svc-header">
+        <div class="svc-icon">${svc.icon}</div>
+        <span class="svc-badge ${paid ? 'unlocked' : 'try-free'}">${paid ? '✓ Unlocked' : 'Try Free'}</span>
+      </div>
+      <div class="svc-name">${svc.label}</div>
+      <div class="svc-desc">${svc.desc}</div>
+      ${!paid ? `<div class="svc-price">${svc.priceStr} to unlock full document</div>` : ''}
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        <button class="btn-open primary" onclick="openDocument('${key}')">
+          ${paid ? '📄 Open Document' : '🔍 Try Free (preview)'}
+        </button>
+        ${!paid ? `<button class="btn-open buy" onclick="addToCart('${key}')" id="cart-btn-${key}">
+          + Add to Cart (${svc.priceStr})
+        </button>` : ''}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function openDocument(serviceKey) {
+  window.location.href = `/estate-planning/create.html?service=${serviceKey}`;
+}
+
+// ─── Cart ─────────────────────────────────────────────────────────────────────
+function toggleBundle(bundleKey, el) {
+  const idx = cart.indexOf(bundleKey);
+  if (idx > -1) { cart.splice(idx, 1); el.classList.remove('selected'); }
+  else { cart.push(bundleKey); el.classList.add('selected'); }
+  updateCartBar();
+}
+
+function addToCart(serviceKey) {
+  if (!cart.includes(serviceKey)) {
+    cart.push(serviceKey);
+    document.getElementById('cart-btn-' + serviceKey).textContent = '✓ In Cart';
+    document.getElementById('cart-btn-' + serviceKey).style.background = '#16a34a';
+  }
+  updateCartBar();
+}
+
+function clearCart() {
+  cart = [];
+  document.querySelectorAll('.bundle-card').forEach(el => el.classList.remove('selected'));
+  renderServices();
+  updateCartBar();
+}
+
+function updateCartBar() {
+  const bar = document.getElementById('checkout-bar');
+  if (cart.length === 0) { bar.classList.remove('visible'); return; }
+
+  let total = 0;
+  const names = [];
+  cart.forEach(item => {
+    if (BUNDLES[item]) { total += BUNDLES[item].price; names.push(BUNDLES[item].label); }
+    else if (SERVICES[item]) { total += SERVICES[item].price; names.push(SERVICES[item].label); }
+    else if (EXPAT_SERVICES[item]) { total += EXPAT_SERVICES[item].price; names.push(EXPAT_SERVICES[item].label); }
+  });
+
+  document.getElementById('cart-total').textContent = '$' + total;
+  document.getElementById('cart-items-list').textContent = names.join(' · ');
+  bar.classList.add('visible');
+}
+
+async function checkout() {
+  if (cart.length === 0) return;
+  const btn = document.querySelector('.btn-checkout');
+  btn.disabled = true; btn.textContent = 'Processing...';
+
+  try {
+    const resp = await fetch(API + '/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type':'application/json', 'x-session-token': token },
+      body: JSON.stringify({ items: cart })
+    });
+    const data = await resp.json();
+    if (data.checkout_url) window.location.href = data.checkout_url;
+    else throw new Error(data.error || 'Checkout failed');
+  } catch(e) {
+    alert('Checkout error: ' + e.message);
+    btn.disabled = false; btn.textContent = 'Secure Checkout →';
+  }
+}
+
+function logout() {
+  if (token) fetch(API + '/logout', { method:'POST', headers:{'x-session-token':token} }).catch(()=>{});
+  localStorage.removeItem('lt_session');
+  localStorage.removeItem('lt_user');
+  window.location.href = '/estate-planning/';
+}
+
+init();
+</script>
+</body>
+</html>

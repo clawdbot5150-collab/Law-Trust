@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-K90ZD6K7CH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-K90ZD6K7CH');
+  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register — Lead Buyer Portal — Law-Trust.com</title>
+<style>
+  :root{--navy:#1a2744;--gold:#c9a84c;--gold-light:#e8c96a;--white:#fff;--light:#f8f9fc;--muted:#666;--border:#dde1ea;}
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:var(--light);color:#333;min-height:100vh;}
+  nav{background:var(--navy);padding:16px 24px;display:flex;justify-content:space-between;align-items:center;}
+  nav a.brand{color:var(--gold);text-decoration:none;font-size:20px;font-weight:700;}
+  nav a.back{color:rgba(255,255,255,0.7);font-size:14px;text-decoration:none;}
+  nav a.back:hover{color:var(--gold);}
+  .hero{background:var(--navy);color:white;padding:36px 24px;text-align:center;}
+  .hero h1{color:var(--gold);font-size:26px;font-weight:800;}
+  .hero p{opacity:0.8;margin-top:8px;font-size:15px;}
+  .container{max-width:680px;margin:0 auto;padding:32px 20px;}
+  .form-card{background:var(--white);border-radius:12px;box-shadow:0 4px 24px rgba(26,39,68,0.08);padding:36px 32px;}
+  .section-head{font-size:16px;font-weight:700;color:var(--navy);border-bottom:2px solid var(--gold);padding-bottom:8px;margin:28px 0 20px;}
+  .section-head:first-child{margin-top:0;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-weight:600;font-size:13px;color:var(--navy);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.3px;}
+  .field input,.field select{width:100%;padding:11px 14px;border:2px solid var(--border);border-radius:8px;font-size:15px;color:#333;background:white;transition:border-color 0.2s;font-family:inherit;}
+  .field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,0.12);}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  
+  .checkbox-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px;}
+  .checkbox-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border:2px solid var(--border);border-radius:8px;cursor:pointer;transition:all 0.2s;}
+  .checkbox-item:hover{border-color:var(--gold-light);}
+  .checkbox-item input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold);}
+  .checkbox-item label{font-size:14px;cursor:pointer;font-weight:500;}
+  
+  .radio-row{display:flex;flex-wrap:wrap;gap:10px;}
+  .radio-btn{position:relative;}
+  .radio-btn input{position:absolute;opacity:0;}
+  .radio-btn label{display:inline-block;padding:9px 18px;border:2px solid var(--border);border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;transition:all 0.2s;}
+  .radio-btn input:checked+label{border-color:var(--gold);background:#fffbf0;color:var(--navy);}
+  .radio-btn label:hover{border-color:var(--gold-light);}
+  
+  .terms-box{display:flex;align-items:flex-start;gap:12px;padding:16px;background:var(--light);border-radius:8px;border:2px solid var(--border);margin-top:8px;}
+  .terms-box input[type=checkbox]{width:18px;height:18px;margin-top:2px;flex-shrink:0;accent-color:var(--navy);}
+  .terms-box label{font-size:14px;color:var(--muted);line-height:1.6;}
+  .terms-box a{color:var(--gold);text-decoration:none;}
+  
+  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);border:none;border-radius:8px;padding:14px 28px;font-size:16px;font-weight:700;cursor:pointer;width:100%;transition:all 0.2s;box-shadow:0 4px 12px rgba(201,168,76,0.3);margin-top:8px;}
+  .btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(201,168,76,0.4);}
+  .btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+  
+  .error-box{background:#fef2f2;border:1px solid #fca5a5;color:#b91c1c;padding:12px 16px;border-radius:8px;font-size:14px;margin-bottom:16px;display:none;}
+  .success-box{background:#f0fdf4;border:1px solid #86efac;color:#166534;padding:20px;border-radius:8px;font-size:15px;display:none;text-align:center;}
+  .success-box h3{font-size:20px;margin-bottom:8px;}
+  
+  .already{text-align:center;margin-top:20px;font-size:14px;color:var(--muted);}
+  .already a{color:var(--gold);text-decoration:none;font-weight:600;}
+
+  @media(max-width:520px){.form-card{padding:20px 16px;}.field-row{grid-template-columns:1fr;}.radio-row{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/buyer-portal/" class="brand">⚖️ Buyer Portal</a>
+  <a href="/buyer-portal/" class="back">← Back to Overview</a>
+</nav>
+
+<div class="hero">
+  <h1>Apply for Lead Buyer Access</h1>
+  <p>Set your preferences and start receiving high-intent legal document leads</p>
+</div>
+
+<div class="container">
+  <div class="form-card">
+    
+    <div id="errorBox" class="error-box"></div>
+    <div id="successBox" class="success-box">
+      <h3>✅ Application Received!</h3>
+      <p>Welcome aboard! Check your email for confirmation and next steps.<br>
+      Redirecting to your dashboard...</p>
+    </div>
+
+    <form id="regForm" onsubmit="submitReg(event)">
+
+      <div class="section-head">👤 Account Information</div>
+      <div class="field-row">
+        <div class="field">
+          <label>Full Name *</label>
+          <input type="text" id="rName" placeholder="Jane Smith" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label>Email *</label>
+          <input type="email" id="rEmail" placeholder="jane@lawfirm.com" required autocomplete="email">
+        </div>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label>Password *</label>
+          <input type="password" id="rPassword" placeholder="Min. 8 characters" required minlength="8">
+        </div>
+        <div class="field">
+          <label>Phone</label>
+          <input type="tel" id="rPhone" placeholder="+1 (555) 000-0000">
+        </div>
+      </div>
+      <div class="field">
+        <label>Law Firm / Practice Name</label>
+        <input type="text" id="rFirm" placeholder="Smith & Associates LLC">
+      </div>
+
+      <div class="section-head">📋 Lead Preferences</div>
+      
+      <div class="field">
+        <label>Document Types You Want (select all that apply)</label>
+        <div class="checkbox-grid" style="margin-top:8px;">
+          <div class="checkbox-item"><input type="checkbox" id="dt-will" value="Last Will"><label for="dt-will">Last Will</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dt-trust" value="Living Trust"><label for="dt-trust">Living Trust</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dt-poa" value="Power of Attorney"><label for="dt-poa">Power of Attorney</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dt-hcd" value="Healthcare Directive"><label for="dt-hcd">Healthcare Directive</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dt-llc" value="LLC Formation"><label for="dt-llc">LLC Formation</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="dt-any" value="Any"><label for="dt-any">Any Document</label></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Countries / Regions</label>
+        <div class="checkbox-grid" style="margin-top:8px;">
+          <div class="checkbox-item"><input type="checkbox" id="c-us" value="US"><label for="c-us">🇺🇸 United States</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="c-uk" value="UK"><label for="c-uk">🇬🇧 United Kingdom</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="c-ca" value="Canada"><label for="c-ca">🇨🇦 Canada</label></div>
+          <div class="checkbox-item"><input type="checkbox" id="c-au" value="Australia"><label for="c-au">🇦🇺 Australia</label></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Price Per Lead You're Willing to Pay</label>
+        <div class="radio-row" style="margin-top:8px;">
+          <div class="radio-btn"><input type="radio" name="pricePerLead" id="ppl40" value="40"><label for="ppl40">$40 (Basic)</label></div>
+          <div class="radio-btn"><input type="radio" name="pricePerLead" id="ppl80" value="80" checked><label for="ppl80">$80 (Standard)</label></div>
+          <div class="radio-btn"><input type="radio" name="pricePerLead" id="ppl120" value="120"><label for="ppl120">$120 (Premium)</label></div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <label>Monthly Budget</label>
+          <select id="rBudget">
+            <option value="$200-$500">$200 – $500/mo</option>
+            <option value="$500-$1000">$500 – $1,000/mo</option>
+            <option value="$1000-$2500" selected>$1,000 – $2,500/mo</option>
+            <option value="$2500+">$2,500+/mo</option>
+          </select>
+        </div>
+        <div class="field">
+          <label>Max Leads Per Month</label>
+          <select id="rMaxLeads">
+            <option value="5">5 leads/month</option>
+            <option value="10" selected>10 leads/month</option>
+            <option value="20">20 leads/month</option>
+            <option value="50">50 leads/month</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="section-head">📜 Terms of Service</div>
+      <div class="terms-box">
+        <input type="checkbox" id="tosAgree" required>
+        <label for="tosAgree">I agree to the <a href="#" onclick="return false;">Lead Buyer Terms of Service</a>. I understand that leads are provided as-is, that I may not resell or redistribute leads, and that billing is based on leads delivered to my account.</label>
+      </div>
+
+      <button type="submit" class="btn-primary" id="regBtn" style="margin-top:24px;">
+        Create My Account & Start Receiving Leads →
+      </button>
+    </form>
+
+  </div>
+  <div class="already">Already have an account? <a href="/buyer-portal/login.html">Log in here →</a></div>
+</div>
+
+<script>
+async function submitReg(e) {
+  e.preventDefault();
+  const btn = document.getElementById('regBtn');
+  const errBox = document.getElementById('errorBox');
+  errBox.style.display = 'none';
+  
+  const name = document.getElementById('rName').value.trim();
+  const email = document.getElementById('rEmail').value.trim();
+  const password = document.getElementById('rPassword').value;
+  const phone = document.getElementById('rPhone').value.trim();
+  const firm = document.getElementById('rFirm').value.trim();
+  const tos = document.getElementById('tosAgree').checked;
+  
+  if (!tos) { errBox.textContent = 'You must agree to the Terms of Service.'; errBox.style.display='block'; return; }
+  
+  const docTypes = ['dt-will','dt-trust','dt-poa','dt-hcd','dt-llc','dt-any']
+    .filter(id => document.getElementById(id).checked)
+    .map(id => document.getElementById(id).value);
+  const countries = ['c-us','c-uk','c-ca','c-au']
+    .filter(id => document.getElementById(id).checked)
+    .map(id => document.getElementById(id).value);
+  const pricePerLead = parseInt(document.querySelector('input[name="pricePerLead"]:checked')?.value || '80');
+  const maxPerMonth = parseInt(document.getElementById('rMaxLeads').value);
+  const monthlyBudget = document.getElementById('rBudget').value;
+
+  btn.disabled = true; btn.textContent = 'Creating account…';
+  
+  try {
+    const res = await fetch('/api/buyers/register', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        name, email, password, phone: phone||null, firm: firm||null,
+        preferences: { docTypes, countries, maxPerMonth, pricePerLead, monthlyBudget }
+      })
+    });
+    const data = await res.json();
+    if (data.success && data.token) {
+      localStorage.setItem('buyerToken', data.token);
+      localStorage.setItem('buyerName', name);
+      document.getElementById('regForm').style.display = 'none';
+      document.getElementById('successBox').style.display = 'block';
+      setTimeout(() => window.location.href = '/buyer-portal/dashboard.html', 2500);
+    } else {
+      errBox.textContent = data.error || 'Registration failed. Please try again.';
+      errBox.style.display = 'block';
+      btn.disabled = false; btn.textContent = 'Create My Account & Start Receiving Leads →';
+    }
+  } catch(err) {
+    errBox.textContent = 'Connection error. Please try again.';
+    errBox.style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Create My Account & Start Receiving Leads →';
+  }
+}
+</script>
+
+</body>
+</html>
