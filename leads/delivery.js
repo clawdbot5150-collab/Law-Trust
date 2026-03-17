@@ -180,7 +180,7 @@ ${products.map(p => `
     }
 
     await callResend({
-      from: 'support@gradingpen.com',
+      from: 'Law-Trust.com <support@law-trust.com>',
       to: lead.email,
       subject: `Your ${lead.doc_type} options — we found ${productCount} match${productCount !== 1 ? 'es' : ''}`,
       html: `<!DOCTYPE html><html><body style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px;">
@@ -241,7 +241,7 @@ ${emailBody}
 
         // Email buyer
         await callResend({
-          from: 'support@gradingpen.com',
+          from: 'Law-Trust.com <support@law-trust.com>',
           to: buyer.email,
           subject: `🔥 New Lead Delivered: ${lead.doc_type} — ${lead.country}`,
           html: `<!DOCTYPE html><html><body style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;padding:20px;">

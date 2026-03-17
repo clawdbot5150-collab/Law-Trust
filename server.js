@@ -17,6 +17,7 @@ app.use(compression());
 // Stripe webhook needs raw body — must be registered BEFORE express.json()
 app.use('/api/wl/webhook', express.raw({ type: 'application/json' }));
 
+app.set('trust proxy', 1);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -223,7 +224,7 @@ try {
   console.log('⚠️ Scheduler not yet available:', e.message);
 }
 
-app.listen(PORT, () => {
+app.listen(PORT, process.env.HOST || '127.0.0.1', () => {
   console.log(`🚀 Law-Trust backend running on port ${PORT}`);
 });
 
