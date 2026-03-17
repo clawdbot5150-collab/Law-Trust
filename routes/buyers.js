@@ -30,7 +30,7 @@ function sendTelegram(text) {
 
 function sendEmail(to, subject, html) {
   return new Promise((resolve) => {
-    const body = JSON.stringify({ from: 'support@gradingpen.com', to, subject, html });
+    const body = JSON.stringify({ from: 'Law-Trust.com <support@law-trust.com>', to, subject, html });
     const options = {
       hostname: 'api.resend.com',
       path: '/emails',
